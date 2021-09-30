@@ -27,6 +27,7 @@ public class Igra extends JFrame implements ActionListener{
 	protected JTextField tfPlanina;
 	protected JTextField tfGrad;
 	protected JTextField tfBiljka;
+	protected String primjedbe;
 	protected Rjesenja r = new Rjesenja();
 	public Igra() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
