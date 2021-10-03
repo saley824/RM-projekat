@@ -76,6 +76,6 @@ public class Primjedbe extends JFrame {
 		if (e.getSource().equals(btnOdbij)) {
 
 		}
-
+		
 	}
 }
