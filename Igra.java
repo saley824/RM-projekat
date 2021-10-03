@@ -1,4 +1,6 @@
-package GUI;
+package RM;
+
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -118,4 +120,10 @@ public class Igra extends JFrame implements ActionListener{
 		
 		
 	}
+	
+	public static void main(String[] args) {
+		Igra igra=new Igra();
+		igra.setVisible(true);
+	}
+	
 }

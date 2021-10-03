@@ -1,8 +1,9 @@
-package GUI;
+package RM;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.awt.Component;
 
-public class Primjedbe extends JFrame {
+public class Primjedbe extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	protected JTextField tfIgrac;
 	protected JTextField tfOdgovor;
@@ -72,9 +73,13 @@ public class Primjedbe extends JFrame {
 		if (e.getSource().equals(btnPrihvati)) {
 
 		}
-		if (e.getSource().equals(btnOdbij)) {s
+		if (e.getSource().equals(btnOdbij)) {
 
 		}
 		
+	}
+	public static void main(String[] args) {
+		Primjedbe p= new Primjedbe();
+		p.setVisible(true);
 	}
 }

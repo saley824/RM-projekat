@@ -1,4 +1,6 @@
-package GUI;
+package RM;
+
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -325,7 +327,9 @@ public class Rjesenja extends JFrame implements ActionListener{
 		tfIgrac3.setEditable(false);
 		tfIgrac3.setColumns(10);
 		tfIgrac3.setBounds(103, 395, 121, 25);
+		tfIgraci[2] = tfIgrac3;
 		contentPane.add(tfIgrac3);
+
 		
 		JLabel lblDrzava3 = new JLabel("DR\u017DAVA");
 		lblDrzava3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -456,6 +460,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		tfIgrac4.setEditable(false);
 		tfIgrac4.setColumns(10);
 		tfIgrac4.setBounds(103, 592, 121, 25);
+		tfIgraci[3] = tfIgrac4;
 		contentPane.add(tfIgrac4);
 		
 		JLabel lblDrzava4 = new JLabel("DR\u017DAVA");
@@ -592,5 +597,10 @@ public class Rjesenja extends JFrame implements ActionListener{
 			
 		}
 		
+	}
+	
+	public static void main(String[] args) {
+		Rjesenja r= new Rjesenja();
+		r.setVisible(true);
 	}
 }

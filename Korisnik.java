@@ -1,4 +1,6 @@
-package GUI;
+package RM;
+
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,13 +9,16 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 
 
 public class Korisnik {
 	public static void main(String[] args) {
-       // Korisnik korisnik = new Korisnik("localhost");
-       // korisnik.execute();
+		Igra igra=new Igra();
+		igra.setVisible(true);
+        Korisnik korisnik = new Korisnik("sasa", igra);
+        korisnik.execute();
 	
     }
 
@@ -25,7 +30,7 @@ public class Korisnik {
     private BufferedReader citac;
     private PrintWriter pisac;
     int brojBodova;
-    public Korisnik(String ime,Igra igra) {
+    public Korisnik(String ime, Igra igra) {
         this.ime = ime;
         this.port = 12345;
         this.igra=igra;
@@ -53,7 +58,9 @@ public class Korisnik {
                 this.igra.tfGrad.setText("");
                 this.igra.tfBiljka.setText("");
                 //Cekanje na potvrdu odgovora
-                while(!this.igra.spremnoSlanje) {}
+                while(!this.igra.spremnoSlanje) { 
+                	System.out.println();
+                }
 		        String drzava = this.igra.tfDrzava.getText();
 				String rijeka = this.igra.tfRijeka.getText();
 				String planina = this.igra.tfPlanina.getText();
@@ -81,6 +88,7 @@ public class Korisnik {
 	        	String[] odgovoriIgraca=rjesenja.split("/");
 	        	int i=1;	        	
 	        	for(String odgovor:odgovoriIgraca) {
+	        		System.out.println(odgovor);
 	        		String[] odg=odgovor.split("_");
 	        		
 	        		
@@ -93,6 +101,8 @@ public class Korisnik {
 	        			i++;
 	        	}
 	        	//Slanje primjedbi
+	        	TimeUnit.SECONDS.sleep(10);
+	        	System.out.println( this.igra.primjedbe);
 	        	pisac.println(this.igra.primjedbe);
 	        	//Server vraca primjedbe ostalih korisnika
 	        	String primjedbeSve=citac.readLine();
@@ -114,3 +124,4 @@ public class Korisnik {
 
    
 }
+
