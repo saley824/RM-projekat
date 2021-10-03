@@ -19,9 +19,8 @@ import java.awt.Component;
 
 public class Primjedbe extends JFrame {
 	private JPanel contentPane;
-	protected JTextField[] tfIgraci;
-	private JTextField tfIgrac;
-	private JTextField tfOdgovor;
+	protected JTextField tfIgrac;
+	protected JTextField tfOdgovor;
 	private JButton btnPrihvati, btnOdbij;
 
 	public Primjedbe() {
