@@ -1,6 +1,4 @@
-package RM;
-
-
+package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -11,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingWorker;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,9 +20,9 @@ import javax.swing.JButton;
 import javax.swing.border.BevelBorder;
 
 public class Igra extends JFrame implements ActionListener{
-
+	protected SwingWorker worker;
 	protected JPanel contentPane;
-	protected boolean spremnoSlanje=false;
+	protected boolean spremnoSlanje;
 	protected JTextField txtS; //polje za slovo
 	protected JTextField tfDrzava;
 	protected JTextField tfRijeka;
@@ -30,8 +30,27 @@ public class Igra extends JFrame implements ActionListener{
 	protected JTextField tfGrad;
 	protected JTextField tfBiljka;
 	protected String primjedbe;
-	protected Rjesenja r = new Rjesenja();
+	//protected Rjesenja r = new Rjesenja();
+	
+	 private void initializeWorker() {
+	        worker = new SwingWorker<Void, Void>() {
+
+	            @Override
+	            protected Void doInBackground() throws Exception {
+	               
+	                while (!isCancelled()) {
+	                  
+	                }
+	                System.out.println("Gotovo");
+	                
+	                return null;
+	            }
+
+	            
+	        };
+	    }
 	public Igra() {
+		this.spremnoSlanje=false;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 458, 486);
 		contentPane = new JPanel();
@@ -111,19 +130,22 @@ public class Igra extends JFrame implements ActionListener{
 		btnPotvrdi.setBounds(130, 375, 150, 33);
 		btnPotvrdi.addActionListener(this);
 		contentPane.add(btnPotvrdi);
+		this.worker=new SWIgra();
+		this.worker.execute();
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		spremnoSlanje = true;
-		this.r = new Rjesenja();
-		r.setVisible(true);
+		this.spremnoSlanje = true;
+		this.worker.cancel(true);
+		this.setVisible(false);
+		//this.r = new Rjesenja();
+		//r.setVisible(true);
 		
 		
 	}
-	
-	public static void main(String[] args) {
-		Igra igra=new Igra();
-		igra.setVisible(true);
 	}
 	
-}
+		
+		
+	
+

@@ -1,4 +1,4 @@
-package RM;
+package GUI;
 
 
 
@@ -25,11 +25,11 @@ public class Server2 {
 		if(n<26 && n!=24 ) {
 			c=(char) (n+97);
 		}
-		else if(n==26) c='ć'; 
-			else if(n==27) c='č';
-				else if(n==28) c='đ';
-					else if(n==29) c='š'; 
-						else if(n==30) c='ž';
+		else if(n==26) c='a'; 
+			else if(n==27) c='b';
+				else if(n==28) c='c';
+					else if(n==29) c='d'; 
+						else if(n==30) c='e';
 		
 		return c;
 	}

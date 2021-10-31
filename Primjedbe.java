@@ -1,4 +1,6 @@
-package RM;
+package GUI;
+
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -23,7 +25,7 @@ public class Primjedbe extends JFrame implements ActionListener {
 	protected JTextField tfIgrac;
 	protected JTextField tfOdgovor;
 	private JButton btnPrihvati, btnOdbij;
-
+	protected boolean gotov=false;
 	public Primjedbe() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 389, 336);
@@ -67,14 +69,19 @@ public class Primjedbe extends JFrame implements ActionListener {
 		btnOdbij.addActionListener(this);
 		contentPane.add(btnOdbij);
 	}
-
+	protected boolean prihvatio=false;
+	protected boolean odbio=false;
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btnPrihvati)) {
-
+			this.prihvatio=true;
+			this.setVisible(false);
+			this.gotov=true;
 		}
 		if (e.getSource().equals(btnOdbij)) {
-
+			this.odbio=true;
+			this.setVisible(false);
+			this.gotov=true;
 		}
 		
 	}
@@ -83,3 +90,4 @@ public class Primjedbe extends JFrame implements ActionListener {
 		p.setVisible(true);
 	}
 }
+

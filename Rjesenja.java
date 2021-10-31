@@ -1,6 +1,4 @@
-package RM;
-
-
+package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -19,7 +17,8 @@ import javax.swing.JButton;
 import javax.swing.border.BevelBorder;
 
 public class Rjesenja extends JFrame implements ActionListener{
-
+	protected String primjedba="";
+	protected boolean PrimjedbeSpremne = false;
 	private JPanel contentPane;
 	private JTextField tfIgrac1,tfIgrac2,tfIgrac3,tfIgrac4;
 	private JTextField tfDrzava1,tfDrzava2,tfDrzava3,tfDrzava4;
@@ -33,9 +32,13 @@ public class Rjesenja extends JFrame implements ActionListener{
 	protected JTextField [] tfBiljke=new JTextField[4];
 	protected JTextField [] tfPlanine=new JTextField[4];
 	protected JTextField [] tfGradovi=new JTextField[4];
-	protected JButton btnPrimjedba1,btnPrimjedba2,btnPrimjedba3,btnPrimjedba4;
-	protected JRadioButton rb11,rb12,rb13,rb14,rb15,rb21,rb22,rb23,rb24,rb25,rb31,rb32,rb33,rb34,rb35,rb41,rb42,rb43,rb44,rb45;
-
+	protected JButton[] btnPrimjedbe=new JButton[4];
+	//protected JRadioButton rb11,rb12,rb13,rb14,rb15,rb21,rb22,rb23,rb24,rb25,rb31,rb32,rb33,rb34,rb35,rb41,rb42,rb43,rb44,rb45;
+	protected JRadioButton[][] rbni=new JRadioButton[4][5];
+	public static void main(String[]args) {
+		Rjesenja r=new Rjesenja();
+		r.setVisible(true);
+	}
 	public Rjesenja() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 687,793);
@@ -139,43 +142,43 @@ public class Rjesenja extends JFrame implements ActionListener{
 		lblNewLabel_1.setBounds(20, 148, 169, 25);
 		contentPane.add(lblNewLabel_1);
 		
-	    rb11 = new JRadioButton("1");
-		rb11.setBackground(new Color(255, 255, 255));
-		rb11.setHorizontalAlignment(SwingConstants.CENTER);
-		rb11.setBounds(234, 192, 42, 24);
-		contentPane.add(rb11);
+	    rbni[0][0] = new JRadioButton("1");
+	    rbni[0][0].setBackground(new Color(255, 255, 255));
+	    rbni[0][0].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[0][0].setBounds(234, 192, 42, 24);
+		contentPane.add(rbni[0][0]);
 		
-	    rb12 = new JRadioButton("2");
-		rb12.setBackground(new Color(255, 255, 255));
-		rb12.setHorizontalAlignment(SwingConstants.CENTER);
-		rb12.setBounds(240, 148, 36, 24);
-		contentPane.add(rb12);
+		rbni[0][1] = new JRadioButton("2");
+		rbni[0][1].setBackground(new Color(255, 255, 255));
+		rbni[0][1].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[0][1].setBounds(240, 148, 36, 24);
+		contentPane.add(rbni[0][1]);
 		
-	    rb13 = new JRadioButton("3");
-		rb13.setBackground(new Color(255, 255, 255));
-		rb13.setHorizontalAlignment(SwingConstants.CENTER);
-		rb13.setBounds(289, 151, 42, 21);
-		contentPane.add(rb13);
+	    rbni[0][2] = new JRadioButton("3");
+		rbni[0][2].setBackground(new Color(255, 255, 255));
+		rbni[0][2].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[0][2].setBounds(289, 151, 42, 21);
+		contentPane.add(rbni[0][2]);
 		
-	    rb14 = new JRadioButton("4");
-		rb14.setBackground(new Color(255, 255, 255));
-		rb14.setHorizontalAlignment(SwingConstants.CENTER);
-		rb14.setBounds(346, 151, 42, 21);
-		contentPane.add(rb14);
+	    rbni[0][3] = new JRadioButton("4");
+		rbni[0][3].setBackground(new Color(255, 255, 255));
+		rbni[0][3].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[0][3].setBounds(346, 151, 42, 21);
+		contentPane.add(rbni[0][3]);
 		
-	    rb15 = new JRadioButton("5");
-		rb15.setBackground(new Color(255, 255, 255));
-		rb15.setHorizontalAlignment(SwingConstants.CENTER);
-		rb15.setBounds(402, 151, 42, 21);
-		contentPane.add(rb15);
+		rbni[0][4] = new JRadioButton("5");
+		rbni[0][4].setBackground(new Color(255, 255, 255));
+		rbni[0][4].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[0][4].setBounds(402, 151, 42, 21);
+		contentPane.add(rbni[0][4]);
 		
-		btnPrimjedba1 = new JButton("PO\u0160ALJI PRIMJEDBU");
-		btnPrimjedba1.setBackground(new Color(173, 216, 230));
-		btnPrimjedba1.setForeground(new Color(255, 255, 255));
-		btnPrimjedba1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnPrimjedba1.setBounds(465, 148, 146, 25);
-		btnPrimjedba1.addActionListener(this);
-		contentPane.add(btnPrimjedba1);
+		btnPrimjedbe[0] = new JButton("PO\u0160ALJI PRIMJEDBU");
+		btnPrimjedbe[0].setBackground(new Color(173, 216, 230));
+		btnPrimjedbe[0].setForeground(new Color(255, 255, 255));
+		btnPrimjedbe[0].setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnPrimjedbe[0].setBounds(465, 148, 146, 25);
+		btnPrimjedbe[0].addActionListener(this);
+		contentPane.add(btnPrimjedbe[0]);
 		
 		//drugi
 		JLabel lblIgrac2 = new JLabel("IGRA\u010C:");
@@ -278,43 +281,43 @@ public class Rjesenja extends JFrame implements ActionListener{
 		lblPrimjedba2.setBounds(20, 343, 169, 25);
 		contentPane.add(lblPrimjedba2);
 		
-	    rb21 = new JRadioButton("1");
-		rb21.setHorizontalAlignment(SwingConstants.CENTER);
-		rb21.setBackground(Color.WHITE);
-		rb21.setBounds(182, 343, 42, 24);
-		contentPane.add(rb21);
+	    rbni[1][0] = new JRadioButton("1");
+		rbni[1][0].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[1][0].setBackground(Color.WHITE);
+		rbni[1][0].setBounds(182, 343, 42, 24);
+		contentPane.add(rbni[1][0]);
 		
-	    rb22 = new JRadioButton("2");
-		rb22.setHorizontalAlignment(SwingConstants.CENTER);
-		rb22.setBackground(Color.WHITE);
-		rb22.setBounds(240, 343, 36, 24);
-		contentPane.add(rb22);
+	    rbni[1][1] = new JRadioButton("2");
+		rbni[1][1].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[1][1].setBackground(Color.WHITE);
+		rbni[1][1].setBounds(240, 343, 36, 24);
+		contentPane.add(rbni[1][1]);
 		
-	    rb23 = new JRadioButton("3");
-		rb23.setHorizontalAlignment(SwingConstants.CENTER);
-		rb23.setBackground(Color.WHITE);
-		rb23.setBounds(289, 345, 42, 21);
-		contentPane.add(rb23);
+	    rbni[1][2] = new JRadioButton("3");
+		rbni[1][2].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[1][2].setBackground(Color.WHITE);
+		rbni[1][2].setBounds(289, 345, 42, 21);
+		contentPane.add(rbni[1][2]);
 		
-		rb24 = new JRadioButton("4");
-		rb24.setHorizontalAlignment(SwingConstants.CENTER);
-		rb24.setBackground(Color.WHITE);
-		rb24.setBounds(346, 345, 42, 21);
-		contentPane.add(rb24);
+		rbni[1][3] = new JRadioButton("4");
+		rbni[1][3].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[1][3].setBackground(Color.WHITE);
+		rbni[1][3].setBounds(346, 345, 42, 21);
+		contentPane.add(rbni[1][3]);
 		
-	    rb25 = new JRadioButton("5");
-		rb25.setHorizontalAlignment(SwingConstants.CENTER);
-		rb25.setBackground(Color.WHITE);
-		rb25.setBounds(391, 345, 42, 21);
-		contentPane.add(rb25);
+	    rbni[1][4] = new JRadioButton("5");
+		rbni[1][4].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[1][4].setBackground(Color.WHITE);
+		rbni[1][4].setBounds(391, 345, 42, 21);
+		contentPane.add(rbni[1][4]);
 		
-	    btnPrimjedba2 = new JButton("PO\u0160ALJI PRIMJEDBU");
-		btnPrimjedba2.setForeground(Color.WHITE);
-		btnPrimjedba2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnPrimjedba2.setBackground(new Color(173, 216, 230));
-		btnPrimjedba2.setBounds(465, 343, 146, 25);
-		btnPrimjedba2.addActionListener(this);
-		contentPane.add(btnPrimjedba2);
+	    btnPrimjedbe[1] = new JButton("PO\u0160ALJI PRIMJEDBU");
+		btnPrimjedbe[1].setForeground(Color.WHITE);
+		btnPrimjedbe[1].setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnPrimjedbe[1].setBackground(new Color(173, 216, 230));
+		btnPrimjedbe[1].setBounds(465, 343, 146, 25);
+		btnPrimjedbe[1].addActionListener(this);
+		contentPane.add(btnPrimjedbe[1]);
 		
 		JLabel lblIgrac3 = new JLabel("IGRA\u010C:");
 		lblIgrac3.setFont(lblIgrac3.getFont().deriveFont(15f));
@@ -326,10 +329,10 @@ public class Rjesenja extends JFrame implements ActionListener{
 		tfIgrac3.setEnabled(false);
 		tfIgrac3.setEditable(false);
 		tfIgrac3.setColumns(10);
+		
 		tfIgrac3.setBounds(103, 395, 121, 25);
 		tfIgraci[2] = tfIgrac3;
 		contentPane.add(tfIgrac3);
-
 		
 		JLabel lblDrzava3 = new JLabel("DR\u017DAVA");
 		lblDrzava3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -411,43 +414,43 @@ public class Rjesenja extends JFrame implements ActionListener{
 		lblPrimjedba3.setBounds(20, 519, 169, 25);
 		contentPane.add(lblPrimjedba3);
 		
-	    rb31 = new JRadioButton("1");
-		rb31.setHorizontalAlignment(SwingConstants.CENTER);
-		rb31.setBackground(Color.WHITE);
-		rb31.setBounds(182, 519, 42, 24);
-		contentPane.add(rb31);
+	    rbni[2][0] = new JRadioButton("1");
+		rbni[2][0].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[2][0].setBackground(Color.WHITE);
+		rbni[2][0].setBounds(182, 519, 42, 24);
+		contentPane.add(rbni[2][0]);
 		
-	    rb32 = new JRadioButton("2");
-		rb32.setHorizontalAlignment(SwingConstants.CENTER);
-		rb32.setBackground(Color.WHITE);
-		rb32.setBounds(240, 519, 36, 24);
-		contentPane.add(rb32);
+	    rbni[2][1] = new JRadioButton("2");
+		rbni[2][1].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[2][1].setBackground(Color.WHITE);
+		rbni[2][1].setBounds(240, 519, 36, 24);
+		contentPane.add(rbni[2][1]);
 		
-		rb33 = new JRadioButton("3");
-		rb33.setHorizontalAlignment(SwingConstants.CENTER);
-		rb33.setBackground(Color.WHITE);
-		rb33.setBounds(289, 521, 42, 21);
-		contentPane.add(rb33);
+		rbni[2][2] = new JRadioButton("3");
+		rbni[2][2].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[2][2].setBackground(Color.WHITE);
+		rbni[2][2].setBounds(289, 521, 42, 21);
+		contentPane.add(rbni[2][2]);
 		
-	    rb34 = new JRadioButton("4");
-		rb34.setHorizontalAlignment(SwingConstants.CENTER);
-		rb34.setBackground(Color.WHITE);
-		rb34.setBounds(346, 521, 42, 21);
-		contentPane.add(rb34);
+	    rbni[2][3] = new JRadioButton("4");
+		rbni[2][3].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[2][3].setBackground(Color.WHITE);
+		rbni[2][3].setBounds(346, 521, 42, 21);
+		contentPane.add(rbni[2][3]);
 		
-	    rb35 = new JRadioButton("5");
-		rb35.setHorizontalAlignment(SwingConstants.CENTER);
-		rb35.setBackground(Color.WHITE);
-		rb35.setBounds(402, 521, 42, 21);
-		contentPane.add(rb35);
+	    rbni[2][4] = new JRadioButton("5");
+		rbni[2][4].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[2][4].setBackground(Color.WHITE);
+		rbni[2][4].setBounds(402, 521, 42, 21);
+		contentPane.add(rbni[2][4]);
 		
-		btnPrimjedba3 = new JButton("PO\u0160ALJI PRIMJEDBU");
-		btnPrimjedba3.setForeground(Color.WHITE);
-		btnPrimjedba3.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnPrimjedba3.setBackground(new Color(173, 216, 230));
-		btnPrimjedba3.setBounds(465, 521, 146, 25);
-		btnPrimjedba3.addActionListener(this);
-		contentPane.add(btnPrimjedba3);
+		btnPrimjedbe[3] = new JButton("PO\u0160ALJI PRIMJEDBU");
+		btnPrimjedbe[3].setForeground(Color.WHITE);
+		btnPrimjedbe[3].setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnPrimjedbe[3].setBackground(new Color(173, 216, 230));
+		btnPrimjedbe[3].setBounds(465, 521, 146, 25);
+		btnPrimjedbe[3].addActionListener(this);
+		contentPane.add(btnPrimjedbe[3]);
 		
 		JLabel lblIgrac4 = new JLabel("IGRA\u010C:");
 		lblIgrac4.setFont(lblIgrac4.getFont().deriveFont(15f));
@@ -460,7 +463,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		tfIgrac4.setEditable(false);
 		tfIgrac4.setColumns(10);
 		tfIgrac4.setBounds(103, 592, 121, 25);
-		tfIgraci[3] = tfIgrac4;
+		tfIgraci[3] =tfIgrac4;
 		contentPane.add(tfIgrac4);
 		
 		JLabel lblDrzava4 = new JLabel("DR\u017DAVA");
@@ -543,35 +546,35 @@ public class Rjesenja extends JFrame implements ActionListener{
 		lblPrimjedba4.setBounds(20, 706, 169, 25);
 		contentPane.add(lblPrimjedba4);
 		
-		rb41 = new JRadioButton("1");
-		rb41.setHorizontalAlignment(SwingConstants.CENTER);
-		rb41.setBackground(Color.WHITE);
-		rb41.setBounds(182, 708, 42, 24);
-		contentPane.add(rb41);
+		rbni[3][0] = new JRadioButton("1");
+		rbni[3][0].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[3][0].setBackground(Color.WHITE);
+		rbni[3][0].setBounds(182, 708, 42, 24);
+		contentPane.add(rbni[3][0]);
 		
-        rb42 = new JRadioButton("2");
-		rb42.setHorizontalAlignment(SwingConstants.CENTER);
-		rb42.setBackground(Color.WHITE);
-		rb42.setBounds(240, 708, 36, 24);
-		contentPane.add(rb42);
+        rbni[3][1] = new JRadioButton("2");
+		rbni[3][1].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[3][1].setBackground(Color.WHITE);
+		rbni[3][1].setBounds(240, 708, 36, 24);
+		contentPane.add(rbni[3][1]);
 		
-	    rb43 = new JRadioButton("3");
-		rb43.setHorizontalAlignment(SwingConstants.CENTER);
-		rb43.setBackground(Color.WHITE);
-		rb43.setBounds(289, 708, 42, 21);
-		contentPane.add(rb43);
+	    rbni[3][2] = new JRadioButton("3");
+		rbni[3][2].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[3][2].setBackground(Color.WHITE);
+		rbni[3][2].setBounds(289, 708, 42, 21);
+		contentPane.add(rbni[3][2]);
 		
-	    rb44 = new JRadioButton("4");
-		rb44.setHorizontalAlignment(SwingConstants.CENTER);
-		rb44.setBackground(Color.WHITE);
-		rb44.setBounds(346, 708, 42, 21);
-		contentPane.add(rb44);
+	    rbni[3][3] = new JRadioButton("4");
+		rbni[3][3].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[3][3].setBackground(Color.WHITE);
+		rbni[3][3].setBounds(346, 708, 42, 21);
+		contentPane.add(rbni[3][3]);
 		
-		rb45 = new JRadioButton("5");
-		rb45.setHorizontalAlignment(SwingConstants.CENTER);
-		rb45.setBackground(Color.WHITE);
-		rb45.setBounds(402, 708, 42, 21);
-		contentPane.add(rb45);
+		rbni[3][4] = new JRadioButton("5");
+		rbni[3][4].setHorizontalAlignment(SwingConstants.CENTER);
+		rbni[3][4].setBackground(Color.WHITE);
+		rbni[3][4].setBounds(402, 708, 42, 21);
+		contentPane.add(rbni[3][4]);
 		
 		JButton btnPrimjedba4 = new JButton("PO\u0160ALJI PRIMJEDBU");
 		btnPrimjedba4.setForeground(Color.WHITE);
@@ -584,23 +587,37 @@ public class Rjesenja extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource().equals(btnPrimjedba1)) {
+		if(e.getSource().equals(btnPrimjedbe[0])) {
+			System.out.print("kliknuo u rjesenju");
+			for(int i=0;i<4;i++)
+			{
+				for(int j=0;j<=4;j++) {
+					if(j==0) {
+						if(rbni[i][j].isSelected())
+							this.primjedba+=this.tfDrzave[i].getText()+"_";
+					}
+					if(j==1) {
+						if(rbni[i][j].isSelected())
+							this.primjedba+=this.tfRijeke[i].getText()+"_";
+					}
+					if(j==2) {
+						if(rbni[i][j].isSelected())
+							this.primjedba+=this.tfPlanine[i].getText()+"_";
+					}
+					if(j==3) {
+						if(rbni[i][j].isSelected())
+							this.primjedba+=this.tfGradovi[i].getText()+"_";
+					}
+					if(j==4) {
+						if(rbni[i][j].isSelected())
+							this.primjedba+=this.tfBiljke[i].getText()+"_";
+					}
+				}
+			}
+			System.out.println("Primjedbe"+primjedba);
+			this.PrimjedbeSpremne=true;
+		}
 		
-		}
-		else if(e.getSource().equals(btnPrimjedba2)) {
-			System.out.println("Drugi");
-		}
-		else if(e.getSource().equals(btnPrimjedba3)) {
-			
-		}
-		else if(e.getSource().equals(btnPrimjedba4)) {
-			
-		}
 		
-	}
-	
-	public static void main(String[] args) {
-		Rjesenja r= new Rjesenja();
-		r.setVisible(true);
 	}
 }

@@ -1,14 +1,17 @@
-package RM;
+package GUI;
 
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import javax.swing.SwingWorker;
 
 public class UserThread extends Thread {
 	private Socket sock;
@@ -24,7 +27,70 @@ public class UserThread extends Thread {
 	private String biljka;
 	private char c;
 	
-	
+	private void initializeWorker() {
+    	
+    	UserThread sender=this;
+        worker = new SwingWorker<Void, Void>() {
+        
+            @Override
+            protected Void doInBackground() throws Exception {
+            	PlayerName = in.readLine();
+                while (Server2.users.size()<1) {
+                  
+                }
+                
+                
+                return null;
+            }
+            @Override
+            protected void done() {
+            	out.println("start");
+    			out.println(c+""); // slanje slova
+    			
+    			String[] odgovori=null;
+				try {
+					odgovori = in.readLine().split("_");
+					for(int i=0;i<odgovori.length;i++)
+			        	System.out.println(odgovori[i]);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} // uzimanje rjesenja
+    			
+    			sender.drzava=odgovori[0];
+    			sender.grad=odgovori[1];
+    			sender.planina=odgovori[2];
+    			sender.rijeka=odgovori[3];
+    			sender.biljka=odgovori[4];
+    			//Simuliranje slanja rjesenja korisniku
+    			out.println("1_a_b_c_d_E/2_a_b_c_d_e/3_a_b_c_d_e/4_a_b_c_d_e");
+    			try {
+					String primjedbeigraca=in.readLine();
+					System.out.println("Primjedbe igraca:"+primjedbeigraca);
+					out.println("Grad-Beograd/Rijeka-Sava/Biljka-Krava");
+					String odgovoriNaPrimjedbe=in.readLine();
+					System.out.println("Odgovori na primjedbe "+odgovoriNaPrimjedbe);
+					out.println(5);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+    			
+    			//Server2.posaljiRjesenja(sender);
+    			/*try {
+    			System.out.println("primjedbe"+in.readLine());
+    			
+    			in.close();
+    			out.close();
+    			sock.close();}
+    			catch(Exception e) {
+    				e.printStackTrace();}*/
+            }
+
+            
+        };
+    }
 
 	public UserThread(Socket sock, int id, char c) {
 		this.c=c;
@@ -39,36 +105,15 @@ public class UserThread extends Thread {
 		start();
 	}
 	
-
+	private SwingWorker worker;
 	@Override
 	public void run() {
 		try {
-			PlayerName = in.readLine();
-					
-				while(Server2.users.size()<3) {
-					//System.out.println();
-				}
-	
+			
+			this.initializeWorker();
+			this.worker.execute();
 		
-			out.println("start");
-			out.println(c+""); // slanje slova
 			
-			String [] odgovori=in.readLine().split("_"); // uzimanje rjesenja
-			
-			this.drzava=odgovori[0];
-			this.grad=odgovori[1];
-			this.planina=odgovori[2];
-			this.rijeka=odgovori[3];
-			this.biljka=odgovori[4];
-			
-			TimeUnit.SECONDS.sleep(5);
-			Server2.posaljiRjesenja(this);
-			
-			System.out.println("primjedbe"+in.readLine());
-			
-			in.close();
-			out.close();
-			sock.close();
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
