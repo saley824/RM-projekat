@@ -22,7 +22,7 @@ public class Korisnik {
 			String [] odgIgrac=citac.readLine().split("/");
 			r=new Rjesenja();
 			r.setVisible(true);
-			for(int i=0;i<4;i++) {
+			for(int i=0;i<2;i++) {
 			String []odgovoriI=odgIgrac[i].split("_");
 			r.tfIgraci[i].setText(odgovoriI[0]);
 			r.tfDrzave[i].setText(odgovoriI[1]);
@@ -42,22 +42,61 @@ public class Korisnik {
 			System.out.println("Poslao");
 			String primjedbeSve=citac.readLine();
 			System.out.println(primjedbeSve);
+			
+			
+			// ovaj dio koda sam mijenjao da bih lakse razlikova oblasti jedne od  drugih(npr. gradove i drzave)
+			// znakom / su razdvojene razlicite kategorije(grad, blijka)
+			// znakom _ su razdvojeni nor. razliciti gradovi
 			String[]nizPrimjedbi=primjedbeSve.split("/");
+			
+			int i=0;
 			for(String prim:nizPrimjedbi) {
-				Primjedbe p=new Primjedbe();
-				p.tfOdgovor.setText(prim);
-				p.setVisible(true);
-				while(p.gotov==false) {
-					System.out.print(p.gotov);
-				}
-				if(p.odbio) {
-					odgovoriNaPrimjedbe+=prim+"-ODBIJEN";
-				}
-				if(p.prihvatio) {
-					odgovoriNaPrimjedbe+=prim+"-PRIHVACEN";
-				}
-				odgovoriNaPrimjedbe+="/";
-				p.setVisible(false);
+				
+				String[]jednaVrstaPrimjedbi=prim.split("_");
+					if(jednaVrstaPrimjedbi[0].equals("X"))
+						odgovoriNaPrimjedbe+="X/";
+					else {
+						for(String prim2: jednaVrstaPrimjedbi) {
+							Primjedbe p=new Primjedbe();
+							if(i==0)
+							p.tfOdgovor.setText(prim2+"-drzava");
+							if(i==1)
+								p.tfOdgovor.setText(prim2+"-grad");
+							if(i==2)
+								p.tfOdgovor.setText(prim2+"-planina");
+							if(i==3)
+								p.tfOdgovor.setText(prim2+"-rijeka");
+							if(i==4)
+								p.tfOdgovor.setText(prim2+"-biljka");
+							
+							p.setVisible(true);
+							
+							while(p.gotov==false) {
+								System.out.print(p.gotov);
+							}
+							if(p.odbio) {
+								
+								// 0 odbijen
+								odgovoriNaPrimjedbe+=prim2+"0_";
+							}
+							if(p.prihvatio) {
+								// 1 prihvacen
+								odgovoriNaPrimjedbe+=prim2+"1_";
+							}
+							
+							
+							p.setVisible(false);
+						}
+						odgovoriNaPrimjedbe.substring(0,odgovoriNaPrimjedbe.length()-1);
+						odgovoriNaPrimjedbe+="/";
+					}
+				
+				i++;
+				
+				
+				
+			
+			
 				
 			}
 			//Slanje Odgovora

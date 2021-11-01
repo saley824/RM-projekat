@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.border.BevelBorder;
 
 public class Rjesenja extends JFrame implements ActionListener{
+	Korisnik korisnik;
 	protected String primjedba="";
 	protected boolean PrimjedbeSpremne = false;
 	private JPanel contentPane;
@@ -35,11 +36,12 @@ public class Rjesenja extends JFrame implements ActionListener{
 	protected JButton[] btnPrimjedbe=new JButton[4];
 	//protected JRadioButton rb11,rb12,rb13,rb14,rb15,rb21,rb22,rb23,rb24,rb25,rb31,rb32,rb33,rb34,rb35,rb41,rb42,rb43,rb44,rb45;
 	protected JRadioButton[][] rbni=new JRadioButton[4][5];
-	public static void main(String[]args) {
-		Rjesenja r=new Rjesenja();
-		r.setVisible(true);
-	}
+//	public static void main(String[]args) {
+//		Rjesenja r=new Rjesenja();
+//		r.setVisible(true);
+//	}
 	public Rjesenja() {
+		// korisnik=k;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 687,793);
 		contentPane = new JPanel();
@@ -595,27 +597,44 @@ public class Rjesenja extends JFrame implements ActionListener{
 					if(j==0) {
 						if(rbni[i][j].isSelected())
 							this.primjedba+=this.tfDrzave[i].getText()+"_";
+						else 
+							this.primjedba+="X"+"_";
+						
 					}
-					if(j==1) {
+					
+					if(j==3) {
 						if(rbni[i][j].isSelected())
-							this.primjedba+=this.tfRijeke[i].getText()+"_";
+							this.primjedba+=this.tfGradovi[i].getText()+"_";
+						else 
+							this.primjedba+="X"+"_";
 					}
 					if(j==2) {
 						if(rbni[i][j].isSelected())
 							this.primjedba+=this.tfPlanine[i].getText()+"_";
+						else 
+							this.primjedba+="X"+"_";
 					}
-					if(j==3) {
+					if(j==1) {
 						if(rbni[i][j].isSelected())
-							this.primjedba+=this.tfGradovi[i].getText()+"_";
+							this.primjedba+=this.tfRijeke[i].getText()+"_";
+						else 
+							this.primjedba+="X"+"_";
 					}
 					if(j==4) {
 						if(rbni[i][j].isSelected())
-							this.primjedba+=this.tfBiljke[i].getText()+"_";
+							this.primjedba+=this.tfBiljke[i].getText();
+						else 
+							this.primjedba+="X";
 					}
 				}
+				
+				this.primjedba+="/";
 			}
 			System.out.println("Primjedbe"+primjedba);
 			this.PrimjedbeSpremne=true;
+			//korisnik.pisac.println(primjedba);
+			
+			
 		}
 		
 		
