@@ -26,9 +26,9 @@ public class Korisnik {
 			String []odgovoriI=odgIgrac[i].split("_");
 			r.tfIgraci[i].setText(odgovoriI[0]);
 			r.tfDrzave[i].setText(odgovoriI[1]);
-			r.tfRijeke[i].setText(odgovoriI[2]);
+			r.tfRijeke[i].setText(odgovoriI[4]);
 			r.tfPlanine[i].setText(odgovoriI[3]);
-			r.tfGradovi[i].setText(odgovoriI[4]);
+			r.tfGradovi[i].setText(odgovoriI[2]);
 			r.tfBiljke[i].setText(odgovoriI[5]);
 			}
 			while(r.PrimjedbeSpremne==false) {
@@ -93,11 +93,6 @@ public class Korisnik {
 				
 				i++;
 				
-				
-				
-			
-			
-				
 			}
 			//Slanje Odgovora
 			System.out.print(odgovoriNaPrimjedbe.substring(0,odgovoriNaPrimjedbe.length()-1));
@@ -105,6 +100,7 @@ public class Korisnik {
 			//Dobijanje bodova od servera
 			String sBodovi=citac.readLine();
 			brojBodova+=Integer.parseInt(sBodovi);
+			System.out.println(brojBodova);
 			gotovCiklus=true;
 			return null;
 		}
@@ -121,6 +117,7 @@ public class Korisnik {
     private PrintWriter pisac;
     int brojBodova;
     protected Rjesenja r;
+    
     public Korisnik(String ime) {
         this.ime = ime;
         this.port = 12345;
@@ -195,7 +192,9 @@ public class Korisnik {
            		SWKorisnik kor=new SWKorisnik();
            		kor.execute();
            		gotovCiklus=false;
-           		while(!gotovCiklus) {}
+           		while(!gotovCiklus) {
+           			
+           		}
            		br++;
 			}
 				

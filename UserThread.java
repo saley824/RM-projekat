@@ -237,6 +237,7 @@ public class UserThread extends Thread {
     	for(Character c: this.slova) {
 			
     		// slanje slova
+    		
 			out.println(c+""); 
 			System.out.println(c+"");
 			
@@ -345,6 +346,14 @@ public class UserThread extends Thread {
     	
 				System.out.println(this.soba.drzavaPrimjedbe);
 				
+				bodovanje(this.soba.drzavaPrimjedbe, this.drzava,0);
+				bodovanje(this.soba.gradoviPrimjedbe, this.grad,1);
+				bodovanje(this.soba.planinaPrimjedbe, this.planina,2);
+				bodovanje(this.soba.rijekePrimjedbe,this.rijeka,3);
+				bodovanje(this.soba.biljkaPrimjedbe, this.biljka,4);
+				
+				out.println(this.points);
+				System.out.println(this);
 				
     	}
     	
@@ -360,6 +369,60 @@ public class UserThread extends Thread {
 //			out.close();
 //			sock.close();
 		
+	}
+	
+	// vraca true ako je rijec prosla, vraca false ako rijec nije prosla
+	private void bodovanje(Vector<PrimjedbaServer> lista, String polje, int n ) {
+		if(!polje.equals("X") && provjeraPrimjedbe(lista, polje) ) {
+			int b=0;
+			for(UserThread korisnik: this.soba.korisnici) {
+				if(n==0) {
+					if(korisnik.getDrzava().equalsIgnoreCase(polje))
+						b++;
+				}
+				
+				
+				if(n==1) {
+					if(korisnik.getGrad().equalsIgnoreCase(polje))
+						b++;
+				}
+					
+				if(n==2) {
+					if(korisnik.getPlanina().equalsIgnoreCase(polje))
+						b++;
+				}
+					
+				if(n==3) {
+					if(korisnik.getRijeka().equalsIgnoreCase(polje))
+						b++;
+				}
+				
+				if(n==4) {
+					if(korisnik.getBiljka().equalsIgnoreCase(polje))
+						b++;
+				}
+					
+			}
+			// 20 poena ako jedini pogodi, 10 ako dvojica isto, 5 ako svi isto
+			if(b==1) 
+				this.setPoints(this.getPoints()+20);
+			
+			else if(b==2)
+				this.setPoints(this.getPoints()+10);
+			
+			else if(b>2) 
+				this.setPoints(this.getPoints()+5);
+			
+		}
+	}
+
+	private boolean provjeraPrimjedbe(Vector<PrimjedbaServer> lista, String polje) {
+		for(PrimjedbaServer ps: lista) {
+			if(ps.getUnos().equalsIgnoreCase(polje)) 
+				if(ps.getNegativniGlasovi()>=2) 
+					return false;		
+	}
+		return true;
 	}
 	
 	private void glasanje(Vector<PrimjedbaServer> lista, String[] glas ) {

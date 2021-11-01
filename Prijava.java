@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 public class Prijava extends JFrame implements ActionListener{
 	private JTextField textName;
 	public JPanel contentPane,gameContentPane;
+	public JLabel poruka;
 	
 	public Korisnik k;
 	public Prijava() {
@@ -59,18 +60,30 @@ public class Prijava extends JFrame implements ActionListener{
 		lblName.setBounds(126, 162, 170, 25);
 		contentPane.add(lblName);
 		
+		poruka = new JLabel("");
+		poruka.setBounds(136, 245, 160, 27);
+		poruka.setText("Igra će početi kad se skupe 3 igraca");
+		contentPane.add(poruka);
+		
+		
 		this.setResizable(false);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//System.out.println(textName.getText());
-		this.setVisible(false);
+		
 		//Igra igra = new Igra();
 		//IgraNit nit=new IgraNit(igra);
 		//nit.start();
-		k=new Korisnik(textName.getText());
+		
+		
+			this.setVisible(false);
+			k=new Korisnik(textName.getText());
+			k.execute();
+		
+		//k=new Korisnik(textName.getText());
 		//igra.setVisible(true);
-		k.execute();
+		
 		
 		
 	}
