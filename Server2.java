@@ -91,7 +91,10 @@ public class Server2 {
 	synchronized public static void posaljiRjesenja( UserThread posiljaoc, Soba soba ) {
 		String s="";
 		for(UserThread user: soba.getKorisnici()) {
-			if(user!=posiljaoc) {
+			if(user==posiljaoc) {
+			s=user.getPlayerName()+"_"+user.getDrzava()+"_"+user.getGrad()+"_"+user.getPlanina()+"_"+user.getRijeka()+"_"+user.getBiljka()+"/"+s;
+			}
+			else{
 			s+=user.getPlayerName()+"_"+user.getDrzava()+"_"+user.getGrad()+"_"+user.getPlanina()+"_"+user.getRijeka()+"_"+user.getBiljka()+"/";
 			}
 			//System.out.println(s);

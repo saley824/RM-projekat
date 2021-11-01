@@ -258,7 +258,7 @@ public class UserThread extends Thread {
 			this.biljka=odgovori[4];
 			
 			try {
-				TimeUnit.SECONDS.sleep(10);
+				TimeUnit.SECONDS.sleep(5);
 			} catch (InterruptedException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
@@ -302,7 +302,7 @@ public class UserThread extends Thread {
 			//System.out.println("drzava primjedbe"+ this.soba.drzavaPrimjedbe);
 			
 			try {
-				TimeUnit.SECONDS.sleep(10);
+				TimeUnit.SECONDS.sleep(5);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

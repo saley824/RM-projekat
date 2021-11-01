@@ -22,7 +22,7 @@ public class Korisnik {
 			String [] odgIgrac=citac.readLine().split("/");
 			r=new Rjesenja();
 			r.setVisible(true);
-			for(int i=0;i<2;i++) {
+			for(int i=0;i<3;i++) {
 			String []odgovoriI=odgIgrac[i].split("_");
 			r.tfIgraci[i].setText(odgovoriI[0]);
 			r.tfDrzave[i].setText(odgovoriI[1]);
