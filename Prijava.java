@@ -61,8 +61,8 @@ public class Prijava extends JFrame implements ActionListener{
 		contentPane.add(lblName);
 		
 		poruka = new JLabel("");
-		poruka.setBounds(136, 245, 160, 27);
-		poruka.setText("Igra će početi kad se skupe 3 igraca");
+		poruka.setBounds(106, 245, 206, 27);
+		poruka.setText("Igra će početi kada udju 3 igraca");
 		contentPane.add(poruka);
 		
 		

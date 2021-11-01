@@ -185,6 +185,7 @@ public class Korisnik {
 			int br=0;
 			while(br<5) {
 				System.out.print(br);
+				TimeUnit.SECONDS.sleep(4);
 				String slovo=citac.readLine();
                	igra=new Igra();
                	igra.txtS.setText(slovo);
@@ -193,7 +194,7 @@ public class Korisnik {
            		kor.execute();
            		gotovCiklus=false;
            		while(!gotovCiklus) {
-           			
+           			System.out.println("");
            		}
            		br++;
 			}
