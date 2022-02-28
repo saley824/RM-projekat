@@ -29,12 +29,12 @@ public class Server2 {
 			c=(char) (n+97);
 		}
 		else if(n==26) c='ć'; 
-			else if(n==27) c='č';
-				else if(n==28) c='đ';
-					else if(n==29) c='š'; 
-						else if(n==30) c='ž';
-		
-		return c;
+		else if(n==27) c='č';
+			else if(n==28) c='đ';
+				else if(n==29) c='š'; 
+					else if(n==30) c='ž';
+	
+	return c;
 	}
 
 	public static void main(String[] args){

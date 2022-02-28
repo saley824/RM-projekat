@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JRadioButton;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.BevelBorder;
 
@@ -41,9 +42,8 @@ public class Rjesenja extends JFrame implements ActionListener{
 //		r.setVisible(true);
 //	}
 	public Rjesenja() {
-		// korisnik=k;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 687,793);
+		setBounds(100, 100, 691,793);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,6 +51,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		contentPane.setLayout(null);
 		
 		JLabel lblIgrac1 = new JLabel("IGRA\u010C:");
+		lblIgrac1.setForeground(new Color(255, 255, 255));
 		lblIgrac1.setFont(lblIgrac1.getFont().deriveFont(lblIgrac1.getFont().getSize() + 4f));
 		lblIgrac1.setBounds(20, 27, 67, 25);
 		contentPane.add(lblIgrac1);
@@ -65,6 +66,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		tfIgrac1.setColumns(10);
 		
 		JLabel lbldrzava1 = new JLabel("DR\u017DAVA");
+		lbldrzava1.setForeground(new Color(255, 255, 255));
 		lbldrzava1.setHorizontalAlignment(SwingConstants.CENTER);
 		lbldrzava1.setFont(lbldrzava1.getFont().deriveFont(lbldrzava1.getFont().getSize() + 2f));
 		lbldrzava1.setBounds(20, 64, 90, 25);
@@ -80,6 +82,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		tfDrzava1.setColumns(10);
 		
 		JLabel lblRijeka1 = new JLabel("RIJEKA");
+		lblRijeka1.setForeground(new Color(255, 255, 255));
 		lblRijeka1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRijeka1.setFont(lblRijeka1.getFont().deriveFont(lblRijeka1.getFont().getSize() + 2f));
 		lblRijeka1.setBounds(142, 64, 82, 25);
@@ -95,6 +98,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		tfRijeka1.setColumns(10);
 		
 		JLabel lblPlanina1 = new JLabel("PLANINA");
+		lblPlanina1.setForeground(new Color(255, 255, 255));
 		lblPlanina1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlanina1.setFont(lblPlanina1.getFont().deriveFont(lblPlanina1.getFont().getSize() + 2f));
 		lblPlanina1.setBounds(263, 64, 92, 25);
@@ -110,6 +114,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		tfPlanina1.setColumns(10);
 		
 		JLabel lblGrad1 = new JLabel("GRAD");
+		lblGrad1.setForeground(new Color(255, 255, 255));
 		lblGrad1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGrad1.setFont(lblGrad1.getFont().deriveFont(lblGrad1.getFont().getSize() + 2f));
 		lblGrad1.setBounds(391, 64, 93, 25);
@@ -125,6 +130,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		tfGrad1.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("BILJKA");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(lblNewLabel.getFont().deriveFont(lblNewLabel.getFont().getSize() + 2f));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(537, 64, 59, 25);
@@ -140,6 +146,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		tfBiljka1.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Primjedba na odgovore:");
+		lblNewLabel_1.setForeground(new Color(255, 245, 238));
 		lblNewLabel_1.setFont(lblNewLabel_1.getFont().deriveFont(lblNewLabel_1.getFont().getSize() + 1f));
 		lblNewLabel_1.setBounds(20, 148, 169, 25);
 		contentPane.add(lblNewLabel_1);
@@ -147,7 +154,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 	    rbni[0][0] = new JRadioButton("1");
 	    rbni[0][0].setBackground(new Color(255, 255, 255));
 	    rbni[0][0].setHorizontalAlignment(SwingConstants.CENTER);
-		rbni[0][0].setBounds(234, 192, 42, 24);
+		rbni[0][0].setBounds(182, 148, 42, 24); //182, 343, 42, 24
 		contentPane.add(rbni[0][0]);
 		
 		rbni[0][1] = new JRadioButton("2");
@@ -175,15 +182,16 @@ public class Rjesenja extends JFrame implements ActionListener{
 		contentPane.add(rbni[0][4]);
 		
 		btnPrimjedbe[0] = new JButton("PO\u0160ALJI PRIMJEDBU");
-		btnPrimjedbe[0].setBackground(new Color(173, 216, 230));
+		btnPrimjedbe[0].setBackground(new Color(65,105,225));
 		btnPrimjedbe[0].setForeground(new Color(255, 255, 255));
 		btnPrimjedbe[0].setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnPrimjedbe[0].setBounds(465, 148, 146, 25);
+		btnPrimjedbe[0].setBounds(465, 521, 146, 25);
 		btnPrimjedbe[0].addActionListener(this);
 		contentPane.add(btnPrimjedbe[0]);
 		
 		//drugi
 		JLabel lblIgrac2 = new JLabel("IGRA\u010C:");
+		lblIgrac2.setForeground(new Color(255, 255, 255));
 		lblIgrac2.setFont(lblIgrac2.getFont().deriveFont(15f));
 		lblIgrac2.setBounds(20, 214, 67, 25);
 		contentPane.add(lblIgrac2);
@@ -213,30 +221,35 @@ public class Rjesenja extends JFrame implements ActionListener{
 		tfDrzava2.setColumns(10);
 		
 		JLabel lblRijeka2 = new JLabel("RIJEKA");
+		lblRijeka2.setForeground(new Color(255, 255, 255));
 		lblRijeka2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRijeka2.setFont(lblRijeka2.getFont().deriveFont(lblRijeka2.getFont().getSize() + 2f));
 		lblRijeka2.setBounds(142, 263, 82, 25);
 		contentPane.add(lblRijeka2);
 		
 		JLabel lblDrzava2 = new JLabel("DR\u017DAVA");
+		lblDrzava2.setForeground(new Color(255, 255, 255));
 		lblDrzava2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDrzava2.setFont(lblDrzava2.getFont().deriveFont(lblDrzava2.getFont().getSize() + 2f));
 		lblDrzava2.setBounds(20, 263, 90, 25);
 		contentPane.add(lblDrzava2);
 		
 		JLabel lblPlanina2 = new JLabel("PLANINA");
+		lblPlanina2.setForeground(new Color(255, 255, 255));
 		lblPlanina2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlanina2.setFont(lblPlanina2.getFont().deriveFont(lblPlanina2.getFont().getSize() + 2f));
 		lblPlanina2.setBounds(263, 263, 92, 25);
 		contentPane.add(lblPlanina2);
 		
 		JLabel lblGrad2 = new JLabel("GRAD");
+		lblGrad2.setForeground(new Color(255, 255, 255));
 		lblGrad2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGrad2.setFont(lblGrad2.getFont().deriveFont(lblGrad2.getFont().getSize() + 2f));
 		lblGrad2.setBounds(391, 263, 93, 25);
 		contentPane.add(lblGrad2);
 		
 		JLabel lblBiljka2 = new JLabel("BILJKA");
+		lblBiljka2.setForeground(new Color(255, 255, 255));
 		lblBiljka2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBiljka2.setFont(lblBiljka2.getFont().deriveFont(lblBiljka2.getFont().getSize() + 2f));
 		lblBiljka2.setBounds(537, 263, 59, 25);
@@ -270,7 +283,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		contentPane.add(tfGrad2);
 		
 		tfBiljka2 = new JTextField();
-		tfBiljka2.setFont(tfBiljka2.getFont().deriveFont(tfBiljka2.getFont().getSize() + 2f));
+	    tfBiljka2.setFont(tfBiljka2.getFont().deriveFont(tfBiljka2.getFont().getSize() + 2f));
 		tfBiljka2.setEnabled(false);
 		tfBiljka2.setEditable(false);
 		tfBiljka2.setColumns(10);
@@ -279,6 +292,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		contentPane.add(tfBiljka2);
 		
 		JLabel lblPrimjedba2 = new JLabel("Primjedba na odgovore:");
+		lblPrimjedba2.setForeground(new Color(255, 255, 255));
 		lblPrimjedba2.setFont(lblPrimjedba2.getFont().deriveFont(lblPrimjedba2.getFont().getSize() + 1f));
 		lblPrimjedba2.setBounds(20, 343, 169, 25);
 		contentPane.add(lblPrimjedba2);
@@ -313,15 +327,16 @@ public class Rjesenja extends JFrame implements ActionListener{
 		rbni[1][4].setBounds(391, 345, 42, 21);
 		contentPane.add(rbni[1][4]);
 		
-	    btnPrimjedbe[1] = new JButton("PO\u0160ALJI PRIMJEDBU");
+	   /* btnPrimjedbe[1] = new JButton("PO\u0160ALJI PRIMJEDBU");
 		btnPrimjedbe[1].setForeground(Color.WHITE);
 		btnPrimjedbe[1].setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnPrimjedbe[1].setBackground(new Color(173, 216, 230));
 		btnPrimjedbe[1].setBounds(465, 343, 146, 25);
 		btnPrimjedbe[1].addActionListener(this);
-		contentPane.add(btnPrimjedbe[1]);
+		contentPane.add(btnPrimjedbe[1]);*/
 		
 		JLabel lblIgrac3 = new JLabel("IGRA\u010C:");
+		lblIgrac3.setForeground(new Color(255, 255, 255));
 		lblIgrac3.setFont(lblIgrac3.getFont().deriveFont(15f));
 		lblIgrac3.setBounds(20, 395, 67, 25);
 		contentPane.add(lblIgrac3);
@@ -337,30 +352,35 @@ public class Rjesenja extends JFrame implements ActionListener{
 		contentPane.add(tfIgrac3);
 		
 		JLabel lblDrzava3 = new JLabel("DR\u017DAVA");
+		lblDrzava3.setForeground(new Color(255, 255, 255));
 		lblDrzava3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDrzava3.setFont(lblDrzava3.getFont().deriveFont(lblDrzava3.getFont().getSize() + 2f));
 		lblDrzava3.setBounds(20, 437, 90, 25);
 		contentPane.add(lblDrzava3);
 		
 		JLabel lblRijeka3 = new JLabel("RIJEKA");
+		lblRijeka3.setForeground(new Color(255, 255, 255));
 		lblRijeka3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRijeka3.setFont(lblRijeka3.getFont().deriveFont(lblRijeka3.getFont().getSize() + 2f));
 		lblRijeka3.setBounds(142, 437, 82, 25);
 		contentPane.add(lblRijeka3);
 		
 		JLabel lblPlanina3 = new JLabel("PLANINA");
+		lblPlanina3.setForeground(new Color(255, 255, 255));
 		lblPlanina3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlanina3.setFont(lblPlanina3.getFont().deriveFont(lblPlanina3.getFont().getSize() + 2f));
 		lblPlanina3.setBounds(263, 437, 92, 25);
 		contentPane.add(lblPlanina3);
 		
 		JLabel lblGrad3 = new JLabel("GRAD");
+		lblGrad3.setForeground(new Color(255, 255, 255));
 		lblGrad3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGrad3.setFont(lblGrad3.getFont().deriveFont(lblGrad3.getFont().getSize() + 2f));
 		lblGrad3.setBounds(391, 437, 93, 25);
 		contentPane.add(lblGrad3);
 		
 		JLabel lblBiljka3 = new JLabel("BILJKA");
+		lblBiljka3.setForeground(new Color(255, 255, 255));
 		lblBiljka3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBiljka3.setFont(lblBiljka3.getFont().deriveFont(lblBiljka3.getFont().getSize() + 2f));
 		lblBiljka3.setBounds(537, 437, 59, 25);
@@ -412,6 +432,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		contentPane.add(tfBiljka3);
 		
 		JLabel lblPrimjedba3 = new JLabel("Primjedba na odgovore:");
+		lblPrimjedba3.setForeground(new Color(255, 255, 255));
 		lblPrimjedba3.setFont(lblPrimjedba3.getFont().deriveFont(lblPrimjedba3.getFont().getSize() + 1f));
 		lblPrimjedba3.setBounds(20, 519, 169, 25);
 		contentPane.add(lblPrimjedba3);
@@ -446,145 +467,20 @@ public class Rjesenja extends JFrame implements ActionListener{
 		rbni[2][4].setBounds(402, 521, 42, 21);
 		contentPane.add(rbni[2][4]);
 		
-		btnPrimjedbe[3] = new JButton("PO\u0160ALJI PRIMJEDBU");
-		btnPrimjedbe[3].setForeground(Color.WHITE);
-		btnPrimjedbe[3].setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnPrimjedbe[3].setBackground(new Color(173, 216, 230));
-		btnPrimjedbe[3].setBounds(465, 521, 146, 25);
-		btnPrimjedbe[3].addActionListener(this);
-		contentPane.add(btnPrimjedbe[3]);
+	
 		
-		JLabel lblIgrac4 = new JLabel("IGRA\u010C:");
-		lblIgrac4.setFont(lblIgrac4.getFont().deriveFont(15f));
-		lblIgrac4.setBounds(20, 592, 67, 25);
-		contentPane.add(lblIgrac4);
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Jovana\\Desktop\\Racunarski sistemi\\Vjezbe\\Projekat\\GrafickiInterfejs\\pozadina2.jpg"));
+		lblNewLabel_2.setBounds(0, 0, 677, 756);
+		contentPane.add(lblNewLabel_2);
 		
-		tfIgrac4 = new JTextField();
-		tfIgrac4.setHorizontalAlignment(SwingConstants.CENTER);
-		tfIgrac4.setEnabled(false);
-		tfIgrac4.setEditable(false);
-		tfIgrac4.setColumns(10);
-		tfIgrac4.setBounds(103, 592, 121, 25);
-		tfIgraci[3] =tfIgrac4;
-		contentPane.add(tfIgrac4);
-		
-		JLabel lblDrzava4 = new JLabel("DR\u017DAVA");
-		lblDrzava4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDrzava4.setFont(lblDrzava4.getFont().deriveFont(lblDrzava4.getFont().getSize() + 2f));
-		lblDrzava4.setBounds(20, 627, 90, 25);
-		contentPane.add(lblDrzava4);
-		
-		JLabel lblRijeka4 = new JLabel("RIJEKA");
-		lblRijeka4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRijeka4.setFont(lblRijeka4.getFont().deriveFont(lblRijeka4.getFont().getSize() + 2f));
-		lblRijeka4.setBounds(142, 627, 82, 25);
-		contentPane.add(lblRijeka4);
-		
-		JLabel lblPlanina4 = new JLabel("PLANINA");
-		lblPlanina4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPlanina4.setFont(lblPlanina4.getFont().deriveFont(lblPlanina4.getFont().getSize() + 2f));
-		lblPlanina4.setBounds(263, 627, 92, 25);
-		contentPane.add(lblPlanina4);
-		
-		JLabel lblGrad4 = new JLabel("GRAD");
-		lblGrad4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGrad4.setFont(lblGrad4.getFont().deriveFont(lblGrad4.getFont().getSize() + 2f));
-		lblGrad4.setBounds(391, 627, 93, 25);
-		contentPane.add(lblGrad4);
-		
-		JLabel lblBiljka4 = new JLabel("BILJKA");
-		lblBiljka4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBiljka4.setFont(lblBiljka4.getFont().deriveFont(lblBiljka4.getFont().getSize() + 2f));
-		lblBiljka4.setBounds(537, 627, 59, 25);
-		contentPane.add(lblBiljka4);
-		
-		tfDrzava4 = new JTextField();
-		tfDrzava4.setFont(tfDrzava4.getFont().deriveFont(tfDrzava4.getFont().getSize() + 2f));
-		tfDrzava4.setEnabled(false);
-		tfDrzava4.setEditable(false);
-		tfDrzava4.setColumns(10);
-		tfDrzava4.setBounds(20, 662, 90, 19);
-		tfDrzave[3] = tfDrzava4;
-		contentPane.add(tfDrzava4);
-		
-		tfRijeka4 = new JTextField();
-		tfRijeka4.setFont(tfRijeka4.getFont().deriveFont(tfRijeka4.getFont().getSize() + 2f));
-		tfRijeka4.setEnabled(false);
-		tfRijeka4.setEditable(false);
-		tfRijeka4.setColumns(10);
-		tfRijeka4.setBounds(142, 662, 90, 20);
-		tfRijeke[3] = tfRijeka4;
-		contentPane.add(tfRijeka4);
-		
-		tfPlanina4 = new JTextField();
-		tfPlanina4.setFont(tfPlanina4.getFont().deriveFont(tfPlanina4.getFont().getSize() + 2f));
-		tfPlanina4.setEnabled(false);
-		tfPlanina4.setEditable(false);
-		tfPlanina4.setColumns(10);
-		tfPlanina4.setBounds(263, 662, 96, 20);
-		tfPlanine[3] = tfPlanina4;
-		contentPane.add(tfPlanina4);
-		
-		tfGrad4 = new JTextField();
-		tfGrad4.setFont(tfGrad4.getFont().deriveFont(tfGrad4.getFont().getSize() + 2f));
-		tfGrad4.setEnabled(false);
-		tfGrad4.setEditable(false);
-		tfGrad4.setColumns(10);
-		tfGrad4.setBounds(391, 663, 96, 20);
-		tfGradovi[3] = tfGrad4;
-		contentPane.add(tfGrad4);
-		
-		tfBiljka4 = new JTextField();
-		tfBiljka4.setFont(tfBiljka4.getFont().deriveFont(tfBiljka4.getFont().getSize() + 2f));
-		tfBiljka4.setEnabled(false);
-		tfBiljka4.setEditable(false);
-		tfBiljka4.setColumns(10);
-		tfBiljka4.setBounds(515, 662, 96, 19);
-		tfBiljke[3] = tfBiljka4;
-		contentPane.add(tfBiljka4);
-		
-		JLabel lblPrimjedba4 = new JLabel("Primjedba na odgovore:");
-		lblPrimjedba4.setFont(lblPrimjedba4.getFont().deriveFont(lblPrimjedba4.getFont().getSize() + 1f));
-		lblPrimjedba4.setBounds(20, 706, 169, 25);
-		contentPane.add(lblPrimjedba4);
-		
-		rbni[3][0] = new JRadioButton("1");
-		rbni[3][0].setHorizontalAlignment(SwingConstants.CENTER);
-		rbni[3][0].setBackground(Color.WHITE);
-		rbni[3][0].setBounds(182, 708, 42, 24);
-		contentPane.add(rbni[3][0]);
-		
-        rbni[3][1] = new JRadioButton("2");
-		rbni[3][1].setHorizontalAlignment(SwingConstants.CENTER);
-		rbni[3][1].setBackground(Color.WHITE);
-		rbni[3][1].setBounds(240, 708, 36, 24);
-		contentPane.add(rbni[3][1]);
-		
-	    rbni[3][2] = new JRadioButton("3");
-		rbni[3][2].setHorizontalAlignment(SwingConstants.CENTER);
-		rbni[3][2].setBackground(Color.WHITE);
-		rbni[3][2].setBounds(289, 708, 42, 21);
-		contentPane.add(rbni[3][2]);
-		
-	    rbni[3][3] = new JRadioButton("4");
-		rbni[3][3].setHorizontalAlignment(SwingConstants.CENTER);
-		rbni[3][3].setBackground(Color.WHITE);
-		rbni[3][3].setBounds(346, 708, 42, 21);
-		contentPane.add(rbni[3][3]);
-		
-		rbni[3][4] = new JRadioButton("5");
-		rbni[3][4].setHorizontalAlignment(SwingConstants.CENTER);
-		rbni[3][4].setBackground(Color.WHITE);
-		rbni[3][4].setBounds(402, 708, 42, 21);
-		contentPane.add(rbni[3][4]);
-		
-		JButton btnPrimjedba4 = new JButton("PO\u0160ALJI PRIMJEDBU");
+		/*JButton btnPrimjedba4 = new JButton("PO\u0160ALJI PRIMJEDBU");
 		btnPrimjedba4.setForeground(Color.WHITE);
 		btnPrimjedba4.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnPrimjedba4.setBackground(new Color(173, 216, 230));
 		btnPrimjedba4.setBounds(465, 708, 146, 25);
 		btnPrimjedba4.addActionListener(this);
-		contentPane.add(btnPrimjedba4);
+		contentPane.add(btnPrimjedba4);*/
 	}
 
 	@Override

@@ -41,7 +41,7 @@ public class Prijava extends JFrame implements ActionListener{
 			}
 		});
 		btnStart.setForeground(new Color(255, 255, 255));
-		btnStart.setBackground(new Color(173, 216, 230));
+		btnStart.setBackground(new Color(65, 105, 225));
 		btnStart.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(135, 206, 250), new Color(95, 158, 160), null, null));
 		btnStart.setFont(btnStart.getFont().deriveFont(btnStart.getFont().getSize() + 5f));
 		btnStart.setBounds(126, 285, 170, 32);
@@ -54,16 +54,23 @@ public class Prijava extends JFrame implements ActionListener{
 		contentPane.add(textName);
 		textName.setColumns(10);
 		
-		JLabel lblName = new JLabel("Korisni\u010Dko ime");
+		JLabel lblName = new JLabel("KORISNIČKO IME");
+		lblName.setForeground(Color.WHITE);
 		lblName.setFont(lblName.getFont().deriveFont(lblName.getFont().getSize() + 4f));
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblName.setBounds(126, 162, 170, 25);
 		contentPane.add(lblName);
 		
 		poruka = new JLabel("");
-		poruka.setBounds(106, 245, 206, 27);
+		poruka.setForeground(Color.WHITE);
+		poruka.setBounds(108, 248, 188, 27);
 		poruka.setText("Igra će početi kada udju 3 igraca");
 		contentPane.add(poruka);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Jovana\\Desktop\\Racunarski sistemi\\Vjezbe\\Projekat\\GrafickiInterfejs\\Pozadina.jpg"));
+		lblNewLabel.setBounds(0, 0, 454, 478);
+		contentPane.add(lblNewLabel);
 		
 		
 		this.setResizable(false);
