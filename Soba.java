@@ -12,6 +12,11 @@ public class Soba extends Thread
 {
 	private int id;
 	public  Set<UserThread> korisnici = Collections.synchronizedSet(new HashSet<>());
+	public  Set<UserThread> korisnici2 = Collections.synchronizedSet(new HashSet<>());
+	public  Set<UserThread> korisnici3 = Collections.synchronizedSet(new HashSet<>());
+	public  Set<UserThread> korisnici4 = Collections.synchronizedSet(new HashSet<>());
+
+
 	public Set<Character> slova = Collections.synchronizedSet(new HashSet<>());
 	public Vector<PrimjedbaServer> gradoviPrimjedbe = new Vector<PrimjedbaServer>();
 	public Vector<PrimjedbaServer> rijekePrimjedbe = new Vector<PrimjedbaServer>();

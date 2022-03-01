@@ -256,13 +256,17 @@ public class UserThread extends Thread {
 			this.planina=odgovori[2];
 			this.rijeka=odgovori[3];
 			this.biljka=odgovori[4];
-			
-			try {
-				TimeUnit.SECONDS.sleep(5);
-			} catch (InterruptedException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
+			Server2.trenutnaSoba.korisnici2.add(this);
+		 	while(Server2.trenutnaSoba.korisnici2.size()<3) {
+				//System.out.println();
 			}
+			
+//			try {
+//				TimeUnit.SECONDS.sleep(5);
+//			} catch (InterruptedException e2) {
+//				// TODO Auto-generated catch block
+//				e2.printStackTrace();
+//			}
 			Server2.posaljiRjesenja(this, soba);
 			
 			//uzimanje primjedbi koje je ovaj korisnik uputio
@@ -301,12 +305,18 @@ public class UserThread extends Thread {
 			
 			//System.out.println("drzava primjedbe"+ this.soba.drzavaPrimjedbe);
 			
-			try {
-				TimeUnit.SECONDS.sleep(5);
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+//			try {
+//				TimeUnit.SECONDS.sleep(5);
+//			} catch (InterruptedException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
+			
+			Server2.trenutnaSoba.korisnici3.add(this);
+		 	while(Server2.trenutnaSoba.korisnici3.size()<3) {
+				//System.out.println();
 			}
+			
 			 //slanje primjedbi od ostalih igraca, kako bi se ovaj korisnik izjasnio
 				Server2.posaljiPrimjedbe(this, this.soba);
 				
@@ -317,6 +327,11 @@ public class UserThread extends Thread {
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				}
+				
+				Server2.trenutnaSoba.korisnici4.add(this);
+			 	while(Server2.trenutnaSoba.korisnici4.size()<3) {
+					//System.out.println();
 				}
 				int brojac=0;
 				for(String g:glasovi) {
