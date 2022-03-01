@@ -32,7 +32,7 @@ public class Soba extends Thread
 		this.id=id;
 		this.status=false;
 		
-		while(this.slova.size()<5) {
+		while(this.slova.size()<2) {
 			char c=charGenerator();
 			this.slova.add(c);
 		}
@@ -55,11 +55,11 @@ public class Soba extends Thread
 		if(n<26 && n!=24 ) {
 			c=(char) (n+97);
 		}
-		else if(n==26) c='a'; 
-			else if(n==27) c='b';
-				else if(n==28) c='c';
-					else if(n==29) c='d'; 
-						else if(n==30) c='e';
+		else if(n==26) c='ć'; 
+			else if(n==27) c='đ';
+				else if(n==28) c='ž';
+					else if(n==29) c='š'; 
+						else if(n==30) c='č';
 		
 		return c;
 	}

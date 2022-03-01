@@ -20,23 +20,23 @@ public class Pobjednik extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Pobjednik frame = new Pobjednik();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Pobjednik frame = new Pobjednik("sasa");
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public Pobjednik() {
+	public Pobjednik(String ime) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 413, 281);
 		contentPane = new JPanel();
@@ -50,14 +50,15 @@ public class Pobjednik extends JFrame {
 		lblNewLabel.setBounds(132, 36, 138, 47);
 		contentPane.add(lblNewLabel);
 		
-		tfPobjednik = new JTextField();
+		tfPobjednik = new JTextField(ime);
 		tfPobjednik.setBounds(98, 110, 192, 37);
 		contentPane.add(tfPobjednik);
 		tfPobjednik.setColumns(10);
+		tfPobjednik.setEditable(false);
 		
 		JLabel lblPozadina = new JLabel("");
 	
-		lblPozadina.setIcon(new ImageIcon("C:\\Users\\obrad\\Desktop\\Pozadina.jpg"));
+		lblPozadina.setIcon(new ImageIcon("./src/GUI/Pozadina.jpg"));
 		lblPozadina.setBounds(0, 0, 399, 255);
 		contentPane.add(lblPozadina);
 	}

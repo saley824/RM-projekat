@@ -134,6 +134,7 @@ public class Server2 {
 		
 		if(!soba.gradoviPrimjedbe.isEmpty()) {
 			for(PrimjedbaServer g: soba.gradoviPrimjedbe) {
+				System.out.println("poredim"+" "+ posiljaoc.getGrad()+" i " + g.getUnos() );
 				if(!posiljaoc.getGrad().equalsIgnoreCase(g.getUnos())) {
 					s+=g.getUnos()+"_";
 					brojac++;
@@ -181,6 +182,7 @@ public class Server2 {
 		
 		if(!soba.rijekePrimjedbe.isEmpty()) {
 			for(PrimjedbaServer r: soba.rijekePrimjedbe) {
+				System.out.println("poredim"+" "+ posiljaoc.getGrad()+" i " + r.getUnos() );
 				if(!posiljaoc.getRijeka().equalsIgnoreCase(r.getUnos())) {
 					s+=r.getUnos()+"_";
 					brojac++;

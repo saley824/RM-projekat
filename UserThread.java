@@ -256,6 +256,11 @@ public class UserThread extends Thread {
 			this.planina=odgovori[2];
 			this.rijeka=odgovori[3];
 			this.biljka=odgovori[4];
+//			System.out.println(odgovori[0]+(odgovori[0].length()));
+//			System.out.println(odgovori[1]+(odgovori[1].length()));
+//			System.out.println(odgovori[2]+(odgovori[2].length()));
+//			System.out.println(odgovori[3]+(odgovori[3].length()));
+//			System.out.println(odgovori[4]+(odgovori[4].length()));
 			Server2.trenutnaSoba.korisnici2.add(this);
 		 	while(Server2.trenutnaSoba.korisnici2.size()<3) {
 				//System.out.println();
@@ -289,14 +294,14 @@ public class UserThread extends Thread {
         			if(!primjedba[0].equals("X")) 
         				this.soba.dodajPrimjedbu(this.soba.drzavaPrimjedbe, new PrimjedbaServer(primjedba[0]));
         			
-        			if(!primjedba[1].equals("X")) 
-        				this.soba.dodajPrimjedbu(this.soba.gradoviPrimjedbe, new PrimjedbaServer(primjedba[1]));
+        			if(!primjedba[3].equals("X")) 
+        				this.soba.dodajPrimjedbu(this.soba.gradoviPrimjedbe, new PrimjedbaServer(primjedba[3]));
         			
         			if(!primjedba[2].equals("X")) 
         				this.soba.dodajPrimjedbu(this.soba.planinaPrimjedbe, new PrimjedbaServer(primjedba[2]));
         			
-        			if(!primjedba[3].equals("X")) 
-        				this.soba.dodajPrimjedbu(this.soba.rijekePrimjedbe, new PrimjedbaServer(primjedba[3]));
+        			if(!primjedba[1].equals("X")) 
+        				this.soba.dodajPrimjedbu(this.soba.rijekePrimjedbe, new PrimjedbaServer(primjedba[1]));
         			
         			if(!primjedba[4].equals("X")) 
         				this.soba.dodajPrimjedbu(this.soba.biljkaPrimjedbe, new PrimjedbaServer(primjedba[4]));
@@ -367,11 +372,20 @@ public class UserThread extends Thread {
 				bodovanje(this.soba.rijekePrimjedbe,this.rijeka,3);
 				bodovanje(this.soba.biljkaPrimjedbe, this.biljka,4);
 				
+				this.getSoba().biljkaPrimjedbe.clear();
+				this.getSoba().gradoviPrimjedbe.clear();
+				this.getSoba().drzavaPrimjedbe.clear();
+				this.getSoba().planinaPrimjedbe.clear();
+				this.getSoba().rijekePrimjedbe.clear();
+				this.getSoba().korisnici4.clear();
+				this.getSoba().korisnici2.clear();
+				this.getSoba().korisnici3.clear();
 				out.println(this.points);
 				System.out.println(this);
 				
     	}
     	
+    		   out.println(pobjednik());
     	
     	
 
@@ -386,6 +400,19 @@ public class UserThread extends Thread {
 		
 	}
 	
+	private String pobjednik() {
+		int maks=0;
+		 UserThread kor=null;
+		for(UserThread korisnik: this.soba.korisnici) {
+			if (korisnik.getPoints()>maks) {
+				maks=korisnik.getPoints();
+				kor=korisnik;
+			}
+			
+		}
+		
+		return kor.getPlayerName();
+	}
 	// vraca true ako je rijec prosla, vraca false ako rijec nije prosla
 	private void bodovanje(Vector<PrimjedbaServer> lista, String polje, int n ) {
 		if(!polje.equals("X") && provjeraPrimjedbe(lista, polje) ) {

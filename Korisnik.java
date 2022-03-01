@@ -184,9 +184,9 @@ public class Korisnik {
 		protected Object doInBackground() throws Exception {
 			
 			int br=0;
-			while(br<5) {
+			while(br<2) {
 				System.out.print(br);
-				TimeUnit.SECONDS.sleep(4);
+				TimeUnit.SECONDS.sleep(1);
 				String slovo=citac.readLine();
                	igra=new Igra();
                	igra.txtS.setText(slovo);
@@ -200,7 +200,9 @@ public class Korisnik {
            		br++;
 			}
 				
-			
+			String pobjednik = citac.readLine();
+			Pobjednik p = new Pobjednik(pobjednik);
+			p.setVisible(true);
 			
 			return null;
 		}

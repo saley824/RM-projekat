@@ -486,7 +486,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		contentPane.add(btnPrimjedbe);
 		
 		JLabel lblNewLabel_2 = new JLabel(""); 
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\obrad\\Desktop\\pozadina2.jpg"));
+		lblNewLabel_2.setIcon(new ImageIcon("./src/GUI/pozadina2.jpg"));
 		lblNewLabel_2.setBounds(0, 0, 677, 756);
 		contentPane.add(lblNewLabel_2);
 	
