@@ -14,6 +14,7 @@ import javax.swing.SwingWorker;
 
 
 public class Korisnik {
+	Korisnik ovaj = this;
 	public class SWRjesenja extends SwingWorker {
 
 		@Override
@@ -57,7 +58,7 @@ public class Korisnik {
 						odgovoriNaPrimjedbe+="X/";
 					else {
 						for(String prim2: jednaVrstaPrimjedbi) {
-							Primjedbe p=new Primjedbe();
+							Primjedbe p=new Primjedbe(ovaj.ime);
 							if(i==0)
 							p.tfOdgovor.setText(prim2+"-drzava");
 							if(i==1)

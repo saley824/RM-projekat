@@ -140,7 +140,7 @@ public class Igra extends JFrame implements ActionListener{
 			contentPane.add(btnPotvrdi);
 			
 			lblPodloga = new JLabel("");
-			lblPodloga.setIcon(new ImageIcon("C:\\Users\\Jovana\\Desktop\\Racunarski sistemi\\Vjezbe\\Projekat\\GrafickiInterfejs\\Pozadina.jpg"));
+			lblPodloga.setIcon(new ImageIcon("C:\\Users\\obrad\\Desktop\\Pozadina.jpg"));
 			lblPodloga.setBounds(0, 0, 444, 461);
 			contentPane.add(lblPodloga);
 			this.worker=new SWIgra();

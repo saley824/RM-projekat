@@ -34,14 +34,16 @@ public class Rjesenja extends JFrame implements ActionListener{
 	protected JTextField [] tfBiljke=new JTextField[4];
 	protected JTextField [] tfPlanine=new JTextField[4];
 	protected JTextField [] tfGradovi=new JTextField[4];
-	protected JButton[] btnPrimjedbe=new JButton[4];
+	
 	//protected JRadioButton rb11,rb12,rb13,rb14,rb15,rb21,rb22,rb23,rb24,rb25,rb31,rb32,rb33,rb34,rb35,rb41,rb42,rb43,rb44,rb45;
-	protected JRadioButton[][] rbni=new JRadioButton[4][5];
+	protected JRadioButton[][] rbni=new JRadioButton[3][5];
+	JButton btnPrimjedbe;
 //	public static void main(String[]args) {
 //		Rjesenja r=new Rjesenja();
 //		r.setVisible(true);
 //	}
 	public Rjesenja() {
+		// korisnik=k;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 691,793);
 		contentPane = new JPanel();
@@ -57,7 +59,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		contentPane.add(lblIgrac1);
 		
 		tfIgrac1 = new JTextField();
-		tfIgrac1.setEnabled(false);
+//		tfIgrac1.setEnabled(false);
 		tfIgrac1.setEditable(false);
 		tfIgrac1.setHorizontalAlignment(SwingConstants.CENTER);
 		tfIgrac1.setBounds(103, 29, 121, 25);
@@ -74,7 +76,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfDrzava1 = new JTextField();
 		tfDrzava1.setFont(tfDrzava1.getFont().deriveFont(tfDrzava1.getFont().getSize() + 2f));
-		tfDrzava1.setEnabled(false);
+		//tfDrzava1.setEnabled(false);
 		tfDrzava1.setEditable(false);
 		tfDrzava1.setBounds(30, 99, 90, 19);
 		tfDrzave[0] = tfDrzava1;
@@ -89,7 +91,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		contentPane.add(lblRijeka1);
 		
 		tfRijeka1 = new JTextField();
-		tfRijeka1.setEnabled(false);
+//		tfRijeka1.setEnabled(false);
 		tfRijeka1.setEditable(false);
 		tfRijeka1.setFont(tfRijeka1.getFont().deriveFont(tfRijeka1.getFont().getSize() + 2f));
 		tfRijeka1.setBounds(142, 98, 90, 20);
@@ -106,7 +108,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfPlanina1 = new JTextField();
 		tfPlanina1.setFont(tfPlanina1.getFont().deriveFont(tfPlanina1.getFont().getSize() + 2f));
-		tfPlanina1.setEnabled(false);
+//		tfPlanina1.setEnabled(false);
 		tfPlanina1.setEditable(false);
 		tfPlanina1.setBounds(259, 99, 96, 20);
 		tfPlanine[0] = tfPlanina1;
@@ -122,7 +124,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfGrad1 = new JTextField();
 		tfGrad1.setEditable(false);
-		tfGrad1.setEnabled(false);
+//		tfGrad1.setEnabled(false);
 		tfGrad1.setFont(tfGrad1.getFont().deriveFont(tfGrad1.getFont().getSize() + 2f));
 		tfGrad1.setBounds(388, 99, 96, 20);
 		tfGradovi[0] = tfGrad1;
@@ -139,7 +141,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		tfBiljka1 = new JTextField();
 		tfBiljka1.setFont(tfBiljka1.getFont().deriveFont(tfBiljka1.getFont().getSize() + 2f));
 		tfBiljka1.setEditable(false);
-		tfBiljka1.setEnabled(false);
+//		tfBiljka1.setEnabled(false);
 		tfBiljka1.setBounds(515, 100, 96, 19);
 		tfBiljke[0] = tfBiljka1;
 		contentPane.add(tfBiljka1);
@@ -181,13 +183,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		rbni[0][4].setBounds(402, 151, 42, 21);
 		contentPane.add(rbni[0][4]);
 		
-		btnPrimjedbe[0] = new JButton("PO\u0160ALJI PRIMJEDBU");
-		btnPrimjedbe[0].setBackground(new Color(65,105,225));
-		btnPrimjedbe[0].setForeground(new Color(255, 255, 255));
-		btnPrimjedbe[0].setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnPrimjedbe[0].setBounds(465, 521, 146, 25);
-		btnPrimjedbe[0].addActionListener(this);
-		contentPane.add(btnPrimjedbe[0]);
+
 		
 		//drugi
 		JLabel lblIgrac2 = new JLabel("IGRA\u010C:");
@@ -197,7 +193,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		contentPane.add(lblIgrac2);
 		
 		tfIgrac2 = new JTextField();
-		tfIgrac2.setEnabled(false);
+//		tfIgrac2.setEnabled(false);
 		tfIgrac2.setEditable(false);
 		tfIgrac2.setHorizontalAlignment(SwingConstants.CENTER);
 		tfIgrac2.setBounds(103, 216, 121, 25);
@@ -213,7 +209,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfDrzava2 = new JTextField();
 		tfDrzava2.setFont(tfDrzava2.getFont().deriveFont(tfDrzava2.getFont().getSize() + 2f));
-		tfDrzava2.setEnabled(false);
+//		tfDrzava2.setEnabled(false);
 		tfDrzava2.setEditable(false);
 		tfDrzava2.setBounds(20, 298, 90, 19);
 		tfDrzave[1] = tfDrzava2;
@@ -257,7 +253,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfRijeka2 = new JTextField();
 		tfRijeka2.setFont(tfRijeka2.getFont().deriveFont(tfRijeka2.getFont().getSize() + 2f));
-		tfRijeka2.setEnabled(false);
+//		tfRijeka2.setEnabled(false);
 		tfRijeka2.setEditable(false);
 		tfRijeka2.setColumns(10);
 		tfRijeka2.setBounds(142, 297, 90, 20);
@@ -266,7 +262,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfPlanina2 = new JTextField();
 		tfPlanina2.setFont(tfPlanina2.getFont().deriveFont(tfPlanina2.getFont().getSize() + 2f));
-		tfPlanina2.setEnabled(false);
+//		tfPlanina2.setEnabled(false);
 		tfPlanina2.setEditable(false);
 		tfPlanina2.setColumns(10);
 		tfPlanina2.setBounds(263, 297, 96, 20);
@@ -275,7 +271,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfGrad2 = new JTextField();
 		tfGrad2.setFont(tfGrad2.getFont().deriveFont(tfGrad2.getFont().getSize() + 2f));
-		tfGrad2.setEnabled(false);
+//		tfGrad2.setEnabled(false);
 		tfGrad2.setEditable(false);
 		tfGrad2.setColumns(10);
 		tfGrad2.setBounds(388, 297, 96, 20);
@@ -284,7 +280,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfBiljka2 = new JTextField();
 	    tfBiljka2.setFont(tfBiljka2.getFont().deriveFont(tfBiljka2.getFont().getSize() + 2f));
-		tfBiljka2.setEnabled(false);
+//		tfBiljka2.setEnabled(false);
 		tfBiljka2.setEditable(false);
 		tfBiljka2.setColumns(10);
 		tfBiljka2.setBounds(515, 298, 96, 19);
@@ -343,7 +339,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfIgrac3 = new JTextField();
 		tfIgrac3.setHorizontalAlignment(SwingConstants.CENTER);
-		tfIgrac3.setEnabled(false);
+//		tfIgrac3.setEnabled(false);
 		tfIgrac3.setEditable(false);
 		tfIgrac3.setColumns(10);
 		
@@ -388,7 +384,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfDrzava3 = new JTextField();
 		tfDrzava3.setFont(tfDrzava3.getFont().deriveFont(tfDrzava3.getFont().getSize() + 2f));
-		tfDrzava3.setEnabled(false);
+//		tfDrzava3.setEnabled(false);
 		tfDrzava3.setEditable(false);
 		tfDrzava3.setColumns(10);
 		tfDrzava3.setBounds(20, 472, 90, 19);
@@ -397,7 +393,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfRijeka3 = new JTextField();
 		tfRijeka3.setFont(tfRijeka3.getFont().deriveFont(tfRijeka3.getFont().getSize() + 2f));
-		tfRijeka3.setEnabled(false);
+//		tfRijeka3.setEnabled(false);
 		tfRijeka3.setEditable(false);
 		tfRijeka3.setColumns(10);
 		tfRijeka3.setBounds(142, 472, 90, 20);
@@ -406,7 +402,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfPlanina3 = new JTextField();
 		tfPlanina3.setFont(tfPlanina3.getFont().deriveFont(tfPlanina3.getFont().getSize() + 2f));
-		tfPlanina3.setEnabled(false);
+//		tfPlanina3.setEnabled(false);
 		tfPlanina3.setEditable(false);
 		tfPlanina3.setColumns(10);
 		tfPlanina3.setBounds(263, 473, 96, 20);
@@ -415,7 +411,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfGrad3 = new JTextField();
 		tfGrad3.setFont(tfGrad3.getFont().deriveFont(tfGrad3.getFont().getSize() + 2f));
-		tfGrad3.setEnabled(false);
+//		tfGrad3.setEnabled(false);
 		tfGrad3.setEditable(false);
 		tfGrad3.setColumns(10);
 		tfGrad3.setBounds(388, 472, 96, 20);
@@ -424,7 +420,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 		tfBiljka3 = new JTextField();
 		tfBiljka3.setFont(tfBiljka3.getFont().deriveFont(tfBiljka3.getFont().getSize() + 2f));
-		tfBiljka3.setEnabled(false);
+//		tfBiljka3.setEnabled(false);
 		tfBiljka3.setEditable(false);
 		tfBiljka3.setColumns(10);
 		tfBiljka3.setBounds(515, 473, 96, 19);
@@ -469,11 +465,6 @@ public class Rjesenja extends JFrame implements ActionListener{
 		
 	
 		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Jovana\\Desktop\\Racunarski sistemi\\Vjezbe\\Projekat\\GrafickiInterfejs\\pozadina2.jpg"));
-		lblNewLabel_2.setBounds(0, 0, 677, 756);
-		contentPane.add(lblNewLabel_2);
-		
 		/*JButton btnPrimjedba4 = new JButton("PO\u0160ALJI PRIMJEDBU");
 		btnPrimjedba4.setForeground(Color.WHITE);
 		btnPrimjedba4.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -481,13 +472,33 @@ public class Rjesenja extends JFrame implements ActionListener{
 		btnPrimjedba4.setBounds(465, 708, 146, 25);
 		btnPrimjedba4.addActionListener(this);
 		contentPane.add(btnPrimjedba4);*/
+	
+		
+		
+
+		
+	    btnPrimjedbe = new JButton("PO\u0160ALJI PRIMJEDBU");
+		btnPrimjedbe.setForeground(new Color(255, 255, 255));
+		btnPrimjedbe.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnPrimjedbe.setBackground(new Color(65,105,225));
+		btnPrimjedbe.setBounds(465, 521, 146, 25);
+		btnPrimjedbe.addActionListener(this);
+		contentPane.add(btnPrimjedbe);
+		
+		JLabel lblNewLabel_2 = new JLabel(""); 
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\obrad\\Desktop\\pozadina2.jpg"));
+		lblNewLabel_2.setBounds(0, 0, 677, 756);
+		contentPane.add(lblNewLabel_2);
+	
+		
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource().equals(btnPrimjedbe[0])) {
+	//	if(e.getSource().equals(btnPrimjedbe)) {
 			System.out.print("kliknuo u rjesenju");
-			for(int i=0;i<4;i++)
+			for(int i=0;i<3;i++)
 			{
 				for(int j=0;j<=4;j++) {
 					if(j==0) {
@@ -531,7 +542,7 @@ public class Rjesenja extends JFrame implements ActionListener{
 			//korisnik.pisac.println(primjedba);
 			
 			
-		}
+//	}
 		
 		
 	}

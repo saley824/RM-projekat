@@ -68,7 +68,7 @@ public class Prijava extends JFrame implements ActionListener{
 		contentPane.add(poruka);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Jovana\\Desktop\\Racunarski sistemi\\Vjezbe\\Projekat\\GrafickiInterfejs\\Pozadina.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\obrad\\Desktop\\Pozadina.jpg"));
 		lblNewLabel.setBounds(0, 0, 454, 478);
 		contentPane.add(lblNewLabel);
 		

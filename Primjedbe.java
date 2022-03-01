@@ -26,7 +26,9 @@ public class Primjedbe extends JFrame implements ActionListener {
 	protected JTextField tfOdgovor;
 	private JButton btnPrihvati, btnOdbij;
 	protected boolean gotov=false;
-	public Primjedbe() {
+	protected String korisnikIme;
+	public Primjedbe(String korisnikIme) {
+		this.korisnikIme=korisnikIme;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 389, 336);
 		contentPane = new JPanel();
@@ -41,9 +43,9 @@ public class Primjedbe extends JFrame implements ActionListener {
 		lblIgrac.setBounds(28, 26, 77, 26);
 		contentPane.add(lblIgrac);
 
-		tfIgrac = new JTextField();
+		tfIgrac = new JTextField(this.korisnikIme);
 		tfIgrac.setEditable(false);
-		tfIgrac.setEnabled(false);
+		//tfIgrac.setEnabled(false);
 		tfIgrac.setBounds(110, 29, 96, 25);
 		contentPane.add(tfIgrac);
 		tfIgrac.setColumns(10);
@@ -85,9 +87,6 @@ public class Primjedbe extends JFrame implements ActionListener {
 		}
 		
 	}
-	public static void main(String[] args) {
-		Primjedbe p= new Primjedbe();
-		p.setVisible(true);
-	}
+
 }
 
