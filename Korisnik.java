@@ -125,6 +125,10 @@ public class Korisnik {
        // this.igra=igra;
         this.brojBodova=0;
     } 
+    
+    public String getIme() {
+    	return ime;
+    }
     protected SwingWorker worker;
     protected String primjedbeOdgovori="";
     public class SWKorisnik extends SwingWorker {
@@ -188,7 +192,7 @@ public class Korisnik {
 				System.out.print(br);
 				TimeUnit.SECONDS.sleep(1);
 				String slovo=citac.readLine();
-               	igra=new Igra();
+               	igra=new Igra(ovaj.getIme());
                	igra.txtS.setText(slovo);
            		igra.setVisible(true);
            		SWKorisnik kor=new SWKorisnik();
@@ -312,6 +316,3 @@ public class Korisnik {
             ex.printStackTrace();
         } 
     }
-    
-   
-}
