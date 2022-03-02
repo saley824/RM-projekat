@@ -1,17 +1,3 @@
-package GUI;
-
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import java.awt.Color;
-
 public class Rezultati extends JFrame {
 
 	private JPanel contentPane;
@@ -20,26 +6,7 @@ public class Rezultati extends JFrame {
 	private JTextField tf2;
 	private JLabel pozadina;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Rezultati frame = new Rezultati();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public Rezultati() {
+	public Rezultati(String i1, String i2, String i3, int b1, int b2, int b3) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 470, 438);
 		contentPane = new JPanel();
@@ -88,21 +55,21 @@ public class Rezultati extends JFrame {
 		contentPane.add(tf2);
 		tf2.setColumns(10);
 		
-		JLabel lblprvi = new JLabel("New label");
+		JLabel lblprvi = new JLabel(i1 + " " + b1);
 		lblprvi.setFont(lblprvi.getFont().deriveFont(lblprvi.getFont().getSize() + 6f));
 		lblprvi.setHorizontalAlignment(SwingConstants.CENTER);
 		lblprvi.setForeground(new Color(245, 255, 250));
 		lblprvi.setBounds(199, 131, 90, 24);
 		contentPane.add(lblprvi);
 		
-		JLabel lbldrugi = new JLabel("New label");
+		JLabel lbldrugi = new JLabel(i2 + " " + b2);
 		lbldrugi.setFont(lbldrugi.getFont().deriveFont(lbldrugi.getFont().getSize() + 6f));
 		lbldrugi.setHorizontalAlignment(SwingConstants.CENTER);
 		lbldrugi.setForeground(new Color(245, 255, 250));
 		lbldrugi.setBounds(78, 160, 95, 24);
 		contentPane.add(lbldrugi);
 		
-		JLabel lbltreci = new JLabel("New label");
+		JLabel lbltreci = new JLabel(i3 + " " + b3);
 		lbltreci.setFont(lbltreci.getFont().deriveFont(lbltreci.getFont().getSize() + 6f));
 		lbltreci.setHorizontalAlignment(SwingConstants.CENTER);
 		lbltreci.setForeground(new Color(245, 255, 250));
