@@ -20,6 +20,7 @@ public class Soba extends Thread
 	public  Set<UserThread> korisnici3 = Collections.synchronizedSet(new HashSet<>());
 	public  Set<UserThread> korisnici4 = Collections.synchronizedSet(new HashSet<>());
 	public  Set<UserThread> korisnici5 = Collections.synchronizedSet(new HashSet<>());
+	public  Set<UserThread> korisnici6 = Collections.synchronizedSet(new HashSet<>());
 
 	public  List<PrimjedbaServer> gradoviPrimjedbe = Collections.synchronizedList(new ArrayList<PrimjedbaServer>());
 	public  List<PrimjedbaServer> rijekePrimjedbe = Collections.synchronizedList(new ArrayList<PrimjedbaServer>());
@@ -60,27 +61,31 @@ public class Soba extends Thread
 	
 	public static char charGenerator() {
 		Random r= new Random();
+		
 		int n= r.nextInt(26);
-		char c='a';
-		 if(n==24) {
-			c='ć';
+		while(n==24 || n==23 || n== 16 || n==22) {
+			 n= r.nextInt(26);
 		}
-		else if(n==23) {
-			c='č';
-		}
-		else if(n==22) {
-			c='đ';
-		}
-		else if(n==16) {
-			c='ž';
-		}
-		else if(n==16) {
-			c='š';
-		}
-		//if(n<26 && n!=24 && n! )
-		else {
-			c=(char) (n+97);
-		}
+		char c=(char) (n+97);
+//		 if(n==24) {
+//			c='ć';
+//		}
+//		else if(n==23) {
+//			c='�?';
+//		}
+//		else if(n==22) {
+//			c='đ';
+//		}
+//		else if(n==16) {
+//			c='ž';
+//		}
+//		else if(n==16) {
+//			c='š';
+//		}
+//		//if(n<26 && n!=24 && n! )
+//		else {
+		
+	//	}
 //		else if(n==26) c='A'; 
 //			else if(n==27) c='B';
 //				else if(n==28) c='C';

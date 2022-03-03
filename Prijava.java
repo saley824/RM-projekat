@@ -35,7 +35,7 @@ public class Prijava extends JFrame implements ActionListener{
 		contentPane.setLayout(null);
 		
 		
-		JButton btnStart = new JButton("ZAPO\u010CNI IGRU");
+		JButton btnStart = new JButton("ZAPOCNI IGRU");
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -54,7 +54,7 @@ public class Prijava extends JFrame implements ActionListener{
 		contentPane.add(textName);
 		textName.setColumns(10);
 		
-		JLabel lblName = new JLabel("KORISNIČKO IME");
+		JLabel lblName = new JLabel("KORISNICKO IME");
 		lblName.setForeground(Color.WHITE);
 		lblName.setFont(lblName.getFont().deriveFont(lblName.getFont().getSize() + 4f));
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);

@@ -33,6 +33,7 @@ public class UserThread extends Thread implements Comparable<UserThread> {
 	private Soba soba;
 	private Set<Character> slova = Collections.synchronizedSet(new HashSet<>());
 	private SwingWorker worker;
+	private int brojac;
 
 //private void initializeWorker() {
 //    	
@@ -274,8 +275,8 @@ public class UserThread extends Thread implements Comparable<UserThread> {
 //			System.out.println(odgovori[2]+(odgovori[2].length()));
 //			System.out.println(odgovori[3]+(odgovori[3].length()));
 //			System.out.println(odgovori[4]+(odgovori[4].length()));
-			Server2.trenutnaSoba.korisnici2.add(this);
-			while (Server2.trenutnaSoba.korisnici2.size() < 3) {
+			this.soba.korisnici2.add(this);
+			while (this.soba.korisnici2.size() < 3) {
 				// System.out.println();
 			}
 
@@ -331,8 +332,8 @@ public class UserThread extends Thread implements Comparable<UserThread> {
 //				e1.printStackTrace();
 //			}
 
-			Server2.trenutnaSoba.korisnici3.add(this);
-			while (Server2.trenutnaSoba.korisnici3.size() < 3) {
+			this.soba.korisnici3.add(this);
+			while (this.soba.korisnici3.size() < 3) {
 				// System.out.println();
 			}
 
@@ -350,18 +351,20 @@ public class UserThread extends Thread implements Comparable<UserThread> {
 				e.printStackTrace();
 			}
 
-			Server2.trenutnaSoba.korisnici4.add(this);
-			while (Server2.trenutnaSoba.korisnici4.size() < 3) {
+			this.soba.korisnici4.add(this);
+			while (this.soba.korisnici4.size() < 3) {
 				// System.out.println();
 			}
-			int brojac = 0;
+			 brojac = 0;
 			System.out.println("GLASANJEEEEEEEEEEEEEEEE  "+ s10);
 			for (String g : glasovi) {
+				if(brojac>4)
+					brojac=0;
 				System.out.println(g);
 				String[] glas = g.split("_");
 
 				if (!glas[0].equals("X")) {
-
+					
 					if (brojac == 0)
 						glasanje(this.soba.drzavaPrimjedbe, glas);
 					else if (brojac == 1)
@@ -378,7 +381,12 @@ public class UserThread extends Thread implements Comparable<UserThread> {
 				brojac++;
 
 			}
-
+			
+			
+			this.soba.korisnici5.add(this);
+			while (this.soba.korisnici5.size() < 3) {
+				// System.out.println();
+			}
 			System.out.println(this.soba.drzavaPrimjedbe);
 
 			bodovanje(this.soba.drzavaPrimjedbe, this.drzava, 0);
@@ -386,8 +394,10 @@ public class UserThread extends Thread implements Comparable<UserThread> {
 			bodovanje(this.soba.planinaPrimjedbe, this.planina, 2);
 			bodovanje(this.soba.rijekePrimjedbe, this.rijeka, 3);
 			bodovanje(this.soba.biljkaPrimjedbe, this.biljka, 4);
-			this.soba.korisnici5.add(this);
-			while (Server2.trenutnaSoba.korisnici5.size() < 3) {
+			
+			
+			this.soba.korisnici6.add(this);
+			while (this.soba.korisnici6.size() < 3) {
 				// System.out.println();
 			}
 			this.getSoba().biljkaPrimjedbe.clear();
@@ -398,6 +408,8 @@ public class UserThread extends Thread implements Comparable<UserThread> {
 			this.getSoba().korisnici4.clear();
 			this.getSoba().korisnici2.clear();
 			this.getSoba().korisnici3.clear();
+			this.getSoba().korisnici5.clear();
+			this.getSoba().korisnici6.clear();
 			out.println(this.points);
 			System.out.println(this);
 
