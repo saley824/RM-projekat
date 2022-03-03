@@ -21,21 +21,21 @@ public class Server2 {
 	//public static Boolean full=false;
 
 	
-	public static char charGenerator() {
-		Random r= new Random();
-		int n= r.nextInt(31);
-		char c='a';
-		if(n<26 && n!=24 ) {
-			c=(char) (n+97);
-		}
-		else if(n==26) c='ć'; 
-			else if(n==27) c='č';
-				else if(n==28) c='đ';
-					else if(n==29) c='š'; 
-						else if(n==30) c='ž';
-		
-		return c;
-	}
+//	public static char charGenerator() {
+//		Random r= new Random();
+//		int n= r.nextInt(31);
+//		char c='a';
+//		if(n<26 && n!=24 ) {
+//			c=(char) (n+97);
+//		}
+//		else if(n==26) c='A'; 
+//			else if(n==27) c='B';
+//				else if(n==28) c='C';
+//					else if(n==29) c='D'; 
+//						else if(n==30) c='e';
+//		
+//		return c;
+//	}
 
 	public static void main(String[] args){
 		try {
@@ -88,147 +88,153 @@ public class Server2 {
 	}
 	
 	// slanje rjesenja ostalih igraca
-	synchronized public static void posaljiRjesenja( UserThread posiljaoc, Soba soba ) {
-		String s="";
-		for(UserThread user: soba.getKorisnici()) {
-			if(user==posiljaoc) {
-			s=user.getPlayerName()+"_"+user.getDrzava()+"_"+user.getGrad()+"_"+user.getPlanina()+"_"+user.getRijeka()+"_"+user.getBiljka()+"/"+s;
-			}
-			else{
-			s+=user.getPlayerName()+"_"+user.getDrzava()+"_"+user.getGrad()+"_"+user.getPlanina()+"_"+user.getRijeka()+"_"+user.getBiljka()+"/";
-			}
-			//System.out.println(s);
+	 public  static void posaljiRjesenja( UserThread posiljaoc, Soba soba ) {
+		 synchronized (soba) {
+				String s="";
+				for(UserThread user: soba.getKorisnici()) {
+					if(user==posiljaoc) {
+					s=user.getPlayerName()+"_"+user.getDrzava()+"_"+user.getGrad()+"_"+user.getPlanina()+"_"+user.getRijeka()+"_"+user.getBiljka()+"/"+s;
+					}
+					else{
+					s+=user.getPlayerName()+"_"+user.getDrzava()+"_"+user.getGrad()+"_"+user.getPlanina()+"_"+user.getRijeka()+"_"+user.getBiljka()+"/";
+					}
+					//System.out.println(s);
+				}
+				String m=s.substring(0,s.length()-1);
+				//System.err.println(m);
+				posiljaoc.sendMessage(m);
 		}
-		String m=s.substring(0,s.length()-1);
-		//System.err.println(m);
-		posiljaoc.sendMessage(m);
+
 
 	}
 	
-	synchronized public static void posaljiPrimjedbe( UserThread posiljaoc, Soba soba ) {
-		int brojac=0;
-		String s="";
-		if(!soba.drzavaPrimjedbe.isEmpty()) {
-			for(PrimjedbaServer d: soba.drzavaPrimjedbe) {
-				if(!posiljaoc.getDrzava().equalsIgnoreCase(d.getUnos())) {
-					s+=d.getUnos()+"_";
-					brojac++;
-				}
-				
-			}
-//			if(!s.isEmpty()) {
-//				s=s.substring(0,s.length()-1);
-//				s+="/";
-//			}
-			
-		}
-		
-		if(brojac==0) 
-			s+="X/";
-		else {
-			s=s.substring(0,s.length()-1);
-			s+="/";
-		}
-		
-		brojac=0;
-		
-		if(!soba.gradoviPrimjedbe.isEmpty()) {
-			for(PrimjedbaServer g: soba.gradoviPrimjedbe) {
-				System.out.println("poredim"+" "+ posiljaoc.getGrad()+" i " + g.getUnos() );
-				if(!posiljaoc.getGrad().equalsIgnoreCase(g.getUnos())) {
-					s+=g.getUnos()+"_";
-					brojac++;
-				}
-				
-			}
-//			if(!s.isEmpty()) {
-//			s=s.substring(0,s.length()-1);
-//			s+="/";
-//			}
-
-		}
-		
-		if(brojac==0) 
-			s+="X/";
-		else {
-			s=s.substring(0,s.length()-1);
-			s+="/";
-		}
-		brojac=0;
-		
-		if(!soba.planinaPrimjedbe.isEmpty()) {
-			for(PrimjedbaServer p: soba.planinaPrimjedbe) {
-				if(!posiljaoc.getPlanina().equalsIgnoreCase(p.getUnos())) {
-					s+=p.getUnos()+"_";
-					brojac++;
-				}
-				
-			}
-//			if(!s.isEmpty()) {
-//			s=s.substring(0,s.length()-1);
-//			s+="/";
-//			}
-			
-		}
-		
-		if(brojac==0) 
-			s+="X/";
-		else {
-			s=s.substring(0,s.length()-1);
-			s+="/";
-		}
-		
-		brojac=0;
-		
-		if(!soba.rijekePrimjedbe.isEmpty()) {
-			for(PrimjedbaServer r: soba.rijekePrimjedbe) {
-				System.out.println("poredim"+" "+ posiljaoc.getGrad()+" i " + r.getUnos() );
-				if(!posiljaoc.getRijeka().equalsIgnoreCase(r.getUnos())) {
-					s+=r.getUnos()+"_";
-					brojac++;
-				}
+	 public static void posaljiPrimjedbe( UserThread posiljaoc, Soba soba ) {
+		 synchronized ( soba.drzavaPrimjedbe) {
+				int brojac=0;
+				String s="";
+				if(!soba.drzavaPrimjedbe.isEmpty()) {
+					for(PrimjedbaServer d: soba.drzavaPrimjedbe) {
+						if(!posiljaoc.getDrzava().equalsIgnoreCase(d.getUnos())) {
+							s+=d.getUnos()+"_";
+							brojac++;
+						}
+						
+					}
+//					if(!s.isEmpty()) {
+//						s=s.substring(0,s.length()-1);
+//						s+="/";
+//					}
 					
-			}
-//			if(!s.isEmpty()) {
-//			s=s.substring(0,s.length()-1);
-//			s+="/";
-//			}
-		}
-		
-		if(brojac==0) 
-			s+="X/";
-		else {
-			s=s.substring(0,s.length()-1);
-			s+="/";
-		}
-		
-		brojac=0;
-	
-		
-		if(!soba.biljkaPrimjedbe.isEmpty()) {
-			for(PrimjedbaServer b: soba.biljkaPrimjedbe) {
-				if(!posiljaoc.getBiljka().equalsIgnoreCase(b.getUnos())) {
-					s+=b.getUnos()+"_";
-					brojac++;
 				}
 				
-			}
-//			if(!s.isEmpty()) {
-//			s=s.substring(0,s.length()-1);
-//			s+="/";
-//			}
+				if(brojac==0) 
+					s+="X/";
+				else {
+					s=s.substring(0,s.length()-1);
+					s+="/";
+				}
+				
+				brojac=0;
+				
+				if(!soba.gradoviPrimjedbe.isEmpty()) {
+					for(PrimjedbaServer g: soba.gradoviPrimjedbe) {
+						System.out.println("poredim"+" "+ posiljaoc.getGrad()+" i " + g.getUnos() );
+						if(!posiljaoc.getGrad().equalsIgnoreCase(g.getUnos())) {
+							s+=g.getUnos()+"_";
+							brojac++;
+						}
+						
+					}
+//					if(!s.isEmpty()) {
+//					s=s.substring(0,s.length()-1);
+//					s+="/";
+//					}
+
+				}
+				
+				if(brojac==0) 
+					s+="X/";
+				else {
+					s=s.substring(0,s.length()-1);
+					s+="/";
+				}
+				brojac=0;
+				
+				if(!soba.planinaPrimjedbe.isEmpty()) {
+					for(PrimjedbaServer p: soba.planinaPrimjedbe) {
+						if(!posiljaoc.getPlanina().equalsIgnoreCase(p.getUnos())) {
+							s+=p.getUnos()+"_";
+							brojac++;
+						}
+						
+					}
+//					if(!s.isEmpty()) {
+//					s=s.substring(0,s.length()-1);
+//					s+="/";
+//					}
+					
+				}
+				
+				if(brojac==0) 
+					s+="X/";
+				else {
+					s=s.substring(0,s.length()-1);
+					s+="/";
+				}
+				
+				brojac=0;
+				
+				if(!soba.rijekePrimjedbe.isEmpty()) {
+					for(PrimjedbaServer r: soba.rijekePrimjedbe) {
+						System.out.println("poredim"+" "+ posiljaoc.getGrad()+" i " + r.getUnos() );
+						if(!posiljaoc.getRijeka().equalsIgnoreCase(r.getUnos())) {
+							s+=r.getUnos()+"_";
+							brojac++;
+						}
+							
+					}
+//					if(!s.isEmpty()) {
+//					s=s.substring(0,s.length()-1);
+//					s+="/";
+//					}
+				}
+				
+				if(brojac==0) 
+					s+="X/";
+				else {
+					s=s.substring(0,s.length()-1);
+					s+="/";
+				}
+				
+				brojac=0;
+			
+				
+				if(!soba.biljkaPrimjedbe.isEmpty()) {
+					for(PrimjedbaServer b: soba.biljkaPrimjedbe) {
+						if(!posiljaoc.getBiljka().equalsIgnoreCase(b.getUnos())) {
+							s+=b.getUnos()+"_";
+							brojac++;
+						}
+						
+					}
+//					if(!s.isEmpty()) {
+//					s=s.substring(0,s.length()-1);
+//					s+="/";
+//					}
+				}
+				
+				if(brojac==0) 
+					s+="X";
+				
+				else {
+					s=s.substring(0,s.length()-1);
+				}
+				brojac=0;
+				
+				
+				posiljaoc.sendMessage(s);
 		}
-		
-		if(brojac==0) 
-			s+="X";
-		
-		else {
-			s=s.substring(0,s.length()-1);
-		}
-		brojac=0;
-		
-		
-		posiljaoc.sendMessage(s);
+	
 
 	}
 

@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.Vector;
@@ -17,8 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.SwingWorker;
 
-
-public class UserThread extends Thread {
+public class UserThread extends Thread implements Comparable<UserThread> {
 	private Socket sock;
 	private BufferedReader in;
 	private PrintWriter out;
@@ -33,7 +33,6 @@ public class UserThread extends Thread {
 	private Soba soba;
 	private Set<Character> slova = Collections.synchronizedSet(new HashSet<>());
 	private SwingWorker worker;
-	
 
 //private void initializeWorker() {
 //    	
@@ -212,16 +211,16 @@ public class UserThread extends Thread {
 
 	@Override
 	public void run() {
-		
-			//this.soba.dodajKorisnika(this);		
+
+		// this.soba.dodajKorisnika(this);
 		try {
 			PlayerName = in.readLine();
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
-    	while(Server2.trenutnaSoba.korisnici.size()<3) {
-			//System.out.println();
+		while (Server2.trenutnaSoba.korisnici.size() < 3) {
+			// System.out.println();
 		}
 //		try {
 //		
@@ -232,40 +231,54 @@ public class UserThread extends Thread {
 //	}catch(Exception ex) {
 //		ex.printStackTrace();
 //	}
-    	//znak za pocetak igre
-    	out.println("start");
-    	for(Character c: this.slova) {
+		// znak za pocetak igre
+		out.println("start");
+		for (Character c : this.slova) {
+
+			// slanje slova
+
+			out.println(c + "#" +this.points);
 			
-    		// slanje slova
-    		
-			out.println(c+""); 
-			System.out.println(c+"");
-			
+			//out.println(this.points+"");
+
 			// uzimanje odgovora
-			
-			String[] odgovori=null;
+
+			String[] odgovori = null;
 			try {
 				odgovori = in.readLine().split("_");
 			} catch (IOException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
-			} 
 			
-			this.drzava=odgovori[0];
-			this.grad=odgovori[1];
-			this.planina=odgovori[2];
-			this.rijeka=odgovori[3];
-			this.biljka=odgovori[4];
+			}
+			
+			this.drzava =odgovori[0];
+			this.grad = odgovori[1];
+			this.planina = odgovori[2];
+			this.rijeka = odgovori[3];
+			this.biljka = odgovori[4];
+			if(!(odgovori[0].substring(0,1).equalsIgnoreCase(c+""))) 
+				this.drzava = "X";
+			if(!(odgovori[1].substring(0,1).equalsIgnoreCase(c+""))) 
+				this.grad = "X";
+			if(!(odgovori[2].substring(0,1).equalsIgnoreCase(c+""))) 
+				this.planina = "X";
+			if(!(odgovori[3].substring(0,1).equalsIgnoreCase(c+""))) 
+				this.rijeka = "X";
+			if(!(odgovori[4].substring(0,1).equalsIgnoreCase(c+""))) 
+				this.biljka = "X";
+			
+			
 //			System.out.println(odgovori[0]+(odgovori[0].length()));
 //			System.out.println(odgovori[1]+(odgovori[1].length()));
 //			System.out.println(odgovori[2]+(odgovori[2].length()));
 //			System.out.println(odgovori[3]+(odgovori[3].length()));
 //			System.out.println(odgovori[4]+(odgovori[4].length()));
 			Server2.trenutnaSoba.korisnici2.add(this);
-		 	while(Server2.trenutnaSoba.korisnici2.size()<3) {
-				//System.out.println();
+			while (Server2.trenutnaSoba.korisnici2.size() < 3) {
+				// System.out.println();
 			}
-			
+
 //			try {
 //				TimeUnit.SECONDS.sleep(5);
 //			} catch (InterruptedException e2) {
@@ -273,212 +286,227 @@ public class UserThread extends Thread {
 //				e2.printStackTrace();
 //			}
 			Server2.posaljiRjesenja(this, soba);
-			
-			//uzimanje primjedbi koje je ovaj korisnik uputio
-			// nek je primjedba u obliku drzava_grad_planina_rijeka_biljka/drzava2_grad2_planina2_rijeka2_biljka2
-			String[] svePrimjedbe=null;
-			String prim="";
+
+			// uzimanje primjedbi koje je ovaj korisnik uputio
+			// nek je primjedba u obliku
+			// drzava_grad_planina_rijeka_biljka/drzava2_grad2_planina2_rijeka2_biljka2
+			String[] svePrimjedbe = null;
+			String prim = "";
 			try {
-				 prim=in.readLine();
+				prim = in.readLine();
 			} catch (IOException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			}
-			System.out.println("Primjedbe koje su stigle: "+prim);
-			
-			svePrimjedbe=prim.split("/");
-			for(String p:svePrimjedbe) {
-        		
-        		String[] primjedba=p.split("_");
-        		
-        			if(!primjedba[0].equals("X")) 
-        				this.soba.dodajPrimjedbu(this.soba.drzavaPrimjedbe, new PrimjedbaServer(primjedba[0]));
-        			
-        			if(!primjedba[3].equals("X")) 
-        				this.soba.dodajPrimjedbu(this.soba.gradoviPrimjedbe, new PrimjedbaServer(primjedba[3]));
-        			
-        			if(!primjedba[2].equals("X")) 
-        				this.soba.dodajPrimjedbu(this.soba.planinaPrimjedbe, new PrimjedbaServer(primjedba[2]));
-        			
-        			if(!primjedba[1].equals("X")) 
-        				this.soba.dodajPrimjedbu(this.soba.rijekePrimjedbe, new PrimjedbaServer(primjedba[1]));
-        			
-        			if(!primjedba[4].equals("X")) 
-        				this.soba.dodajPrimjedbu(this.soba.biljkaPrimjedbe, new PrimjedbaServer(primjedba[4]));
-        	
-        	}
-			
-			//System.out.println("drzava primjedbe"+ this.soba.drzavaPrimjedbe);
-			
+			System.out.println("Primjedbe koje su stigle: " + prim);
+
+			svePrimjedbe = prim.split("/");
+			for (String p : svePrimjedbe) {
+
+				String[] primjedba = p.split("_");
+
+				if (!primjedba[0].equals("X"))
+					this.soba.dodajPrimjedbu(this.soba.drzavaPrimjedbe, new PrimjedbaServer(primjedba[0]));
+
+				if (!primjedba[3].equals("X"))
+					this.soba.dodajPrimjedbu(this.soba.gradoviPrimjedbe, new PrimjedbaServer(primjedba[3]));
+
+				if (!primjedba[2].equals("X"))
+					this.soba.dodajPrimjedbu(this.soba.planinaPrimjedbe, new PrimjedbaServer(primjedba[2]));
+
+				if (!primjedba[1].equals("X"))
+					this.soba.dodajPrimjedbu(this.soba.rijekePrimjedbe, new PrimjedbaServer(primjedba[1]));
+
+				if (!primjedba[4].equals("X"))
+					this.soba.dodajPrimjedbu(this.soba.biljkaPrimjedbe, new PrimjedbaServer(primjedba[4]));
+
+			}
+
+			// System.out.println("drzava primjedbe"+ this.soba.drzavaPrimjedbe);
+
 //			try {
 //				TimeUnit.SECONDS.sleep(5);
 //			} catch (InterruptedException e1) {
 //				// TODO Auto-generated catch block
 //				e1.printStackTrace();
 //			}
-			
+
 			Server2.trenutnaSoba.korisnici3.add(this);
-		 	while(Server2.trenutnaSoba.korisnici3.size()<3) {
-				//System.out.println();
+			while (Server2.trenutnaSoba.korisnici3.size() < 3) {
+				// System.out.println();
 			}
-			
-			 //slanje primjedbi od ostalih igraca, kako bi se ovaj korisnik izjasnio
-				Server2.posaljiPrimjedbe(this, this.soba);
-				
-				// preuzimanje glasova za primjedbe ovog korisnika 
-				String[] glasovi=null;
-				try {
-					glasovi = in.readLine().split("/");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				Server2.trenutnaSoba.korisnici4.add(this);
-			 	while(Server2.trenutnaSoba.korisnici4.size()<3) {
-					//System.out.println();
-				}
-				int brojac=0;
-				for(String g:glasovi) {
-	        		System.out.println(g);
-	        		String[] glas=g.split("_");
-	        		
-	        	
-	        			if(!glas[0].equals("X")) {
-	        			
-	        				
-	        				if(brojac==0)
-	        					glasanje(this.soba.drzavaPrimjedbe, glas);
-	        				else if(brojac==1)
-	        					glasanje(this.soba.gradoviPrimjedbe, glas);
-	        				else if(brojac==2)
-	        					glasanje(this.soba.planinaPrimjedbe, glas);
-	        				else if(brojac==3)
-	        					glasanje(this.soba.rijekePrimjedbe, glas);
-	        				else if(brojac==4)
-	        					glasanje(this.soba.biljkaPrimjedbe, glas);
-	        							
-	        			}
-	        			
-	        	brojac++;
-	        	
-	        	}
-    	
-				System.out.println(this.soba.drzavaPrimjedbe);
-				
-				bodovanje(this.soba.drzavaPrimjedbe, this.drzava,0);
-				bodovanje(this.soba.gradoviPrimjedbe, this.grad,1);
-				bodovanje(this.soba.planinaPrimjedbe, this.planina,2);
-				bodovanje(this.soba.rijekePrimjedbe,this.rijeka,3);
-				bodovanje(this.soba.biljkaPrimjedbe, this.biljka,4);
-				
-				this.getSoba().biljkaPrimjedbe.clear();
-				this.getSoba().gradoviPrimjedbe.clear();
-				this.getSoba().drzavaPrimjedbe.clear();
-				this.getSoba().planinaPrimjedbe.clear();
-				this.getSoba().rijekePrimjedbe.clear();
-				this.getSoba().korisnici4.clear();
-				this.getSoba().korisnici2.clear();
-				this.getSoba().korisnici3.clear();
-				out.println(this.points);
-				System.out.println(this);
-				
-    	}
-    	
-    		   out.println(pobjednik());
-    	
-    	
 
-	
-				
+			// slanje primjedbi od ostalih igraca, kako bi se ovaj korisnik izjasnio
+			Server2.posaljiPrimjedbe(this, this.soba);
 
-		
-			
+			// preuzimanje glasova za primjedbe ovog korisnika
+			String[] glasovi = null;
+			String s10= "";
+			try {
+				 s10 = in.readLine();
+				glasovi = s10.split("/");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			Server2.trenutnaSoba.korisnici4.add(this);
+			while (Server2.trenutnaSoba.korisnici4.size() < 3) {
+				// System.out.println();
+			}
+			int brojac = 0;
+			System.out.println("GLASANJEEEEEEEEEEEEEEEE  "+ s10);
+			for (String g : glasovi) {
+				System.out.println(g);
+				String[] glas = g.split("_");
+
+				if (!glas[0].equals("X")) {
+
+					if (brojac == 0)
+						glasanje(this.soba.drzavaPrimjedbe, glas);
+					else if (brojac == 1)
+						glasanje(this.soba.gradoviPrimjedbe, glas);
+					else if (brojac == 2)
+						glasanje(this.soba.planinaPrimjedbe, glas);
+					else if (brojac == 3)
+						glasanje(this.soba.rijekePrimjedbe, glas);
+					else if (brojac == 4)
+						glasanje(this.soba.biljkaPrimjedbe, glas);
+
+				}
+
+				brojac++;
+
+			}
+
+			System.out.println(this.soba.drzavaPrimjedbe);
+
+			bodovanje(this.soba.drzavaPrimjedbe, this.drzava, 0);
+			bodovanje(this.soba.gradoviPrimjedbe, this.grad, 1);
+			bodovanje(this.soba.planinaPrimjedbe, this.planina, 2);
+			bodovanje(this.soba.rijekePrimjedbe, this.rijeka, 3);
+			bodovanje(this.soba.biljkaPrimjedbe, this.biljka, 4);
+			this.soba.korisnici5.add(this);
+			while (Server2.trenutnaSoba.korisnici5.size() < 3) {
+				// System.out.println();
+			}
+			this.getSoba().biljkaPrimjedbe.clear();
+			this.getSoba().gradoviPrimjedbe.clear();
+			this.getSoba().drzavaPrimjedbe.clear();
+			this.getSoba().planinaPrimjedbe.clear();
+			this.getSoba().rijekePrimjedbe.clear();
+			this.getSoba().korisnici4.clear();
+			this.getSoba().korisnici2.clear();
+			this.getSoba().korisnici3.clear();
+			out.println(this.points);
+			System.out.println(this);
+
+		}
+
+		out.println(pobjednik());
+
 //			in.close();
 //			out.close();
 //			sock.close();
-		
+
 	}
-	
-	private String pobjednik() {
-		int maks=0;
-		 UserThread kor=null;
-		for(UserThread korisnik: this.soba.korisnici) {
-			if (korisnik.getPoints()>maks) {
-				maks=korisnik.getPoints();
-				kor=korisnik;
+
+	private synchronized String pobjednik() {
+		synchronized (this.soba.korisnici) {
+			Collections.sort(this.soba.korisnici);
+			String s = "";
+			UserThread kor = null;
+//			for(UserThread korisnik: this.soba.korisnici) {
+//				if (korisnik.getPoints()>maks) {
+//					maks=korisnik.getPoints();
+//					kor=korisnik;
+//				}
+//				
+//			}
+			int i = 0;
+			for (UserThread korisnik : this.soba.korisnici) {
+				s += korisnik.getPlayerName() + "#" + korisnik.getPoints() + "#";
+				i++;
 			}
-			
+			s = s.substring(0, s.length() - 1);
+			return s;
 		}
-		
-		return kor.getPlayerName();
+	
 	}
+
 	// vraca true ako je rijec prosla, vraca false ako rijec nije prosla
-	private void bodovanje(Vector<PrimjedbaServer> lista, String polje, int n ) {
-		if(!polje.equals("X") && provjeraPrimjedbe(lista, polje) ) {
-			int b=0;
-			for(UserThread korisnik: this.soba.korisnici) {
-				if(n==0) {
-					if(korisnik.getDrzava().equalsIgnoreCase(polje))
-						b++;
-				}
-				
-				
-				if(n==1) {
-					if(korisnik.getGrad().equalsIgnoreCase(polje))
-						b++;
-				}
-					
-				if(n==2) {
-					if(korisnik.getPlanina().equalsIgnoreCase(polje))
-						b++;
-				}
-					
-				if(n==3) {
-					if(korisnik.getRijeka().equalsIgnoreCase(polje))
-						b++;
-				}
-				
-				if(n==4) {
-					if(korisnik.getBiljka().equalsIgnoreCase(polje))
-						b++;
-				}
-					
-			}
-			// 20 poena ako jedini pogodi, 10 ako dvojica isto, 5 ako svi isto
-			if(b==1) 
-				this.setPoints(this.getPoints()+20);
-			
-			else if(b==2)
-				this.setPoints(this.getPoints()+10);
-			
-			else if(b>2) 
-				this.setPoints(this.getPoints()+5);
-			
-		}
-	}
+	private void bodovanje(List<PrimjedbaServer> lista, String polje, int n) {
+		synchronized (lista) {
+			if (!polje.equals("X") && provjeraPrimjedbe(lista, polje)) {
+				int b = 0;
+				for (UserThread korisnik : this.soba.korisnici) {
+					if (n == 0) {
+						if (korisnik.getDrzava().equalsIgnoreCase(polje))
+							b++;
+					}
 
-	private boolean provjeraPrimjedbe(Vector<PrimjedbaServer> lista, String polje) {
-		for(PrimjedbaServer ps: lista) {
-			if(ps.getUnos().equalsIgnoreCase(polje)) 
-				if(ps.getNegativniGlasovi()>=2) 
-					return false;		
-	}
-		return true;
-	}
-	
-	private void glasanje(Vector<PrimjedbaServer> lista, String[] glas ) {
-		for(String s: glas) {
-			for(PrimjedbaServer ps: lista) {
-					if(ps.getUnos().equalsIgnoreCase(s.substring(0,s.length()-1))) 
-						if((s.substring(s.length()-1).equals("1")))
-							ps.setNegativniGlasovi(ps.getNegativniGlasovi()+1);
-						
-					
+					if (n == 1) {
+						if (korisnik.getGrad().equalsIgnoreCase(polje))
+							b++;
+					}
+
+					if (n == 2) {
+						if (korisnik.getPlanina().equalsIgnoreCase(polje))
+							b++;
+					}
+
+					if (n == 3) {
+						if (korisnik.getRijeka().equalsIgnoreCase(polje))
+							b++;
+					}
+
+					if (n == 4) {
+						if (korisnik.getBiljka().equalsIgnoreCase(polje))
+							b++;
+					}
+
+				}
+				// 20 poena ako jedini pogodi, 10 ako dvojica isto, 5 ako svi isto
+				if (b == 1)
+					this.setPoints(this.getPoints() + 20);
+
+				else if (b == 2)
+					this.setPoints(this.getPoints() + 10);
+
+				else if (b > 2)
+					this.setPoints(this.getPoints() + 5);
 
 			}
 		}
+
 	}
+
+	private boolean provjeraPrimjedbe(List<PrimjedbaServer> lista, String polje) {
+		synchronized (lista) {
+			for (PrimjedbaServer ps : lista) {
+				if (ps.getUnos().equalsIgnoreCase(polje))
+					if (ps.getNegativniGlasovi() >= 2)
+						return false;
+			}
+			return true;
+		}
+
+	}
+
+	private void glasanje(List<PrimjedbaServer> lista, String[] glas) {
+		synchronized (lista) {
+			for (String s : glas) {
+				for (PrimjedbaServer ps : lista) {
+					if (ps.getUnos().equalsIgnoreCase(s.substring(0, s.length() - 1)))
+						if ((s.substring(s.length() - 1).equals("1")))
+							ps.setNegativniGlasovi(ps.getNegativniGlasovi() + 1);
+
+				}
+			}
+		}
+
+	}
+
 	public void sendToClient(String s) {
 		out.println(s);
 	}
@@ -570,6 +598,12 @@ public class UserThread extends Thread {
 
 	public void setSlova(Set<Character> slova) {
 		this.slova = slova;
+	}
+
+	@Override
+	public int compareTo(UserThread ut) {
+		// TODO Auto-generated method stub
+		return ut.points - this.points;
 	}
 
 }

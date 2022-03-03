@@ -1,3 +1,15 @@
+package GUI;
+
+import java.awt.Color;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
 public class Rezultati extends JFrame {
 
 	private JPanel contentPane;
@@ -21,6 +33,29 @@ public class Rezultati extends JFrame {
 		lblNewLabel.setBounds(10, 20, 461, 55);
 		contentPane.add(lblNewLabel);
 		
+		
+		JLabel lblprvi = new JLabel(i1 + " " + b1);
+		lblprvi.setFont(lblprvi.getFont().deriveFont(lblprvi.getFont().getSize() + 6f));
+		lblprvi.setHorizontalAlignment(SwingConstants.CENTER);
+		lblprvi.setForeground(new Color(245, 255, 250));
+		lblprvi.setBounds(199, 125, 90, 24);
+		contentPane.add(lblprvi);
+		
+		JLabel lbldrugi = new JLabel(i2 + " " + b2);
+		lbldrugi.setFont(lbldrugi.getFont().deriveFont(lbldrugi.getFont().getSize() + 6f));
+		lbldrugi.setHorizontalAlignment(SwingConstants.CENTER);
+		lbldrugi.setForeground(new Color(245, 255, 250));
+		//lbldrugi.setBounds(78, 160, 95, 24);
+		contentPane.add(lbldrugi);
+		
+		JLabel lbltreci = new JLabel(i3 + " " + b3);
+		lbltreci.setFont(lbltreci.getFont().deriveFont(lbltreci.getFont().getSize() + 6f));
+		lbltreci.setHorizontalAlignment(SwingConstants.CENTER);
+		lbltreci.setForeground(new Color(245, 255, 250));
+		//lbltreci.setBounds(315, 182, 96, 24);
+		contentPane.add(lbltreci);
+		
+		
 		tf1 = new JTextField();
 		tf1.setEnabled(false);
 		tf1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -37,44 +72,55 @@ public class Rezultati extends JFrame {
 		tf3.setFont(tf3.getFont().deriveFont(tf3.getFont().getSize() + 20f));
 		tf3.setBackground(new Color(0, 0, 128));
 		tf3.setForeground(new Color(245, 255, 250));
-		tf3.setText("3.");
+		if(b1==b2 && b2==b3) {
+			tf3.setText("1.");
+			tf3.setBounds(315, 159, 96, 128);
+			lbltreci.setBounds(315, 131, 96, 24);
+		}
+		
+		else if (b2==b3) {
+			tf3.setText("2.");
+			tf3.setBounds(315, 194, 96, 93);
+			lbltreci.setBounds(315, 160, 96, 24);
+		}
+		else {
+			tf3.setText("3.");
+			tf3.setBounds(315, 214, 96, 73);
+			lbltreci.setBounds(315, 182, 96, 24);
+			
+		}
+		
 		tf3.setEnabled(false);
-		tf3.setBounds(315, 214, 96, 73);
+	//	tf3.setBounds(315, 214, 96, 73);
 		contentPane.add(tf3);
 		tf3.setColumns(10);
 		
 		tf2 = new JTextField();
 		tf2.setEnabled(false);
-		tf2.setText("2.");
+		if(b1==b2) {
+			tf2.setText("1.");
+			tf2.setBounds(78, 159, 96, 128);
+			lbldrugi.setBounds(78, 125, 95, 24);
+		//	tf1.setBounds(199, 159, 96, 128);
+		}
+		
+		else {
+			tf2.setText("2.");
+			tf2.setBounds(78, 194, 96, 93);
+			lbldrugi.setBounds(78, 160, 95, 24);
+			//tf2.setBounds(78, 194, 96, 93);
+		}
+
 		tf2.setBackground(new Color(0, 0, 128));
 		tf2.setForeground(new Color(245, 255, 250));
 		tf2.setFont(tf2.getFont().deriveFont(tf2.getFont().getSize() + 23f));
 		tf2.setHorizontalAlignment(SwingConstants.CENTER);
 		tf2.setToolTipText("");
-		tf2.setBounds(78, 194, 96, 93);
+		
 		contentPane.add(tf2);
 		tf2.setColumns(10);
 		
-		JLabel lblprvi = new JLabel(i1 + " " + b1);
-		lblprvi.setFont(lblprvi.getFont().deriveFont(lblprvi.getFont().getSize() + 6f));
-		lblprvi.setHorizontalAlignment(SwingConstants.CENTER);
-		lblprvi.setForeground(new Color(245, 255, 250));
-		lblprvi.setBounds(199, 131, 90, 24);
-		contentPane.add(lblprvi);
-		
-		JLabel lbldrugi = new JLabel(i2 + " " + b2);
-		lbldrugi.setFont(lbldrugi.getFont().deriveFont(lbldrugi.getFont().getSize() + 6f));
-		lbldrugi.setHorizontalAlignment(SwingConstants.CENTER);
-		lbldrugi.setForeground(new Color(245, 255, 250));
-		lbldrugi.setBounds(78, 160, 95, 24);
-		contentPane.add(lbldrugi);
-		
-		JLabel lbltreci = new JLabel(i3 + " " + b3);
-		lbltreci.setFont(lbltreci.getFont().deriveFont(lbltreci.getFont().getSize() + 6f));
-		lbltreci.setHorizontalAlignment(SwingConstants.CENTER);
-		lbltreci.setForeground(new Color(245, 255, 250));
-		lbltreci.setBounds(315, 182, 96, 24);
-		contentPane.add(lbltreci);
+
 		
 		JLabel pozadina = new JLabel("");
 		pozadina.setIcon(new ImageIcon("./src/GUI/Pozadina.jpg"));

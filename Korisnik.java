@@ -88,8 +88,9 @@ public class Korisnik {
 							
 							p.setVisible(false);
 						}
-						odgovoriNaPrimjedbe.substring(0,odgovoriNaPrimjedbe.length()-1);
+						odgovoriNaPrimjedbe=odgovoriNaPrimjedbe.substring(0,odgovoriNaPrimjedbe.length()-1);
 						odgovoriNaPrimjedbe+="/";
+					
 					}
 				
 				i++;
@@ -191,9 +192,15 @@ public class Korisnik {
 			while(br<2) {
 				System.out.print(br);
 				TimeUnit.SECONDS.sleep(1);
-				String slovo=citac.readLine();
-               	igra=new Igra(ovaj.getIme());
-               	igra.txtS.setText(slovo);
+				
+				String slovoBod=citac.readLine();
+				String[] slovoBod2=slovoBod.split("#");
+				String slovo = slovoBod2[0];
+				String bod=slovoBod2[1];
+				int bodovi = Integer.parseInt(bod);
+               	igra=new Igra(ovaj.getIme(), bodovi);
+               	
+               	igra.slovo.setText(slovo);
            		igra.setVisible(true);
            		SWKorisnik kor=new SWKorisnik();
            		kor.execute();
@@ -205,8 +212,14 @@ public class Korisnik {
 			}
 				
 			String pobjednik = citac.readLine();
-			Pobjednik p = new Pobjednik(pobjednik);
-			p.setVisible(true);
+			String[] listaRezultata=pobjednik.split("#");
+			int rez1 =Integer.parseInt( listaRezultata[1]);
+			int rez2 =Integer.parseInt( listaRezultata[3]);
+			int rez3 =Integer.parseInt( listaRezultata[5]);
+			Rezultati r = new Rezultati(listaRezultata[0], listaRezultata[2], listaRezultata[4], rez1, rez2, rez3);
+
+		
+			r.setVisible(true);
 			
 			return null;
 		}
@@ -315,4 +328,5 @@ public class Korisnik {
         } catch (Exception ex) {
             ex.printStackTrace();
         } 
+    }
     }

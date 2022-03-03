@@ -26,7 +26,7 @@ public class Igra extends JFrame implements ActionListener{
 	protected SwingWorker worker;
 	protected JPanel contentPane;
 	protected boolean spremnoSlanje;
-	protected JTextField txtS; //polje za slovo
+	protected JTextField slovo; //polje za slovo
 	protected JTextField tfDrzava;
 	protected JTextField tfRijeka;
 	protected JTextField tfPlanina;
@@ -34,7 +34,8 @@ public class Igra extends JFrame implements ActionListener{
 	protected JTextField tfBiljka;
 	protected String primjedbe;
 	protected JLabel lblPodloga;
-	private JTextField textField;
+	private JTextField ime;
+	private JTextField bodovi;
 	//protected Rjesenja r = new Rjesenja();
 	
 	 private void initializeWorker() {
@@ -54,7 +55,7 @@ public class Igra extends JFrame implements ActionListener{
 	            
 	        };
 	    }
-	 public Igra(String imeKorisnika) {
+	 public Igra(String imeKorisnika, int brojBodova) {
 			this.spremnoSlanje=false;
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(100, 100, 458, 486);
@@ -64,15 +65,16 @@ public class Igra extends JFrame implements ActionListener{
 			setContentPane(contentPane);
 			contentPane.setLayout(null);
 			
-			txtS = new JTextField();
-			txtS.setForeground(new Color(65, 105, 225));
-			txtS.setEnabled(false);
-			txtS.setFont(txtS.getFont().deriveFont(txtS.getFont().getStyle() | Font.BOLD, txtS.getFont().getSize() + 5f));
+			slovo = new JTextField();
+			slovo.setForeground(new Color(65, 105, 225));
+			//slovo.setEnabled(false);
+			slovo.setEditable(false);
+			slovo.setFont(slovo.getFont().deriveFont(slovo.getFont().getStyle() | Font.BOLD, slovo.getFont().getSize() + 5f));
 			//txtS.setText("S");
-			txtS.setHorizontalAlignment(SwingConstants.CENTER);
-			txtS.setBounds(98, 69, 254, 33);
-			contentPane.add(txtS);
-			txtS.setColumns(10);
+			slovo.setHorizontalAlignment(SwingConstants.CENTER);
+			slovo.setBounds(98, 69, 254, 33);
+			contentPane.add(slovo);
+			slovo.setColumns(10);
 			
 			JLabel lblDrzava = new JLabel("Dr\u017Eava:");
 			lblDrzava.setForeground(new Color(255, 255, 255));
@@ -149,16 +151,31 @@ public class Igra extends JFrame implements ActionListener{
 			lblPodloga.setBounds(0, 0, 444, 471);
 			contentPane.add(lblPodloga);
 			
-			textField = new JTextField();
-			textField.setFont(textField.getFont().deriveFont(textField.getFont().getSize() + 4f));
-			textField.setSelectionColor(new Color(0, 0, 205));
-			textField.setEnabled(false);
+			ime = new JTextField();
+			ime.setFont(ime.getFont().deriveFont(ime.getFont().getSize() + 4f));
+			ime.setSelectionColor(new Color(0, 0, 205));
+			//ime.setEnabled(false);
+			ime.setEditable(false);
 			//textField.setEditable(false);
-			textField.setHorizontalAlignment(SwingConstants.CENTER);
-			textField.setBounds(27, 17, 121, 33);
-			contentPane.add(textField);
-			textField.setColumns(10);
-			textField.setText(imeKorisnika);
+			ime.setHorizontalAlignment(SwingConstants.CENTER);
+			ime.setBounds(27, 17, 121, 33);
+			contentPane.add(ime);
+			ime.setColumns(10);
+			ime.setText(imeKorisnika);
+			
+			bodovi = new JTextField(brojBodova+"");
+			bodovi.setFont(ime.getFont().deriveFont(ime.getFont().getSize() + 4f));
+			bodovi.setSelectionColor(new Color(0, 0, 205));
+			
+			bodovi.setEditable(false);
+			bodovi.setHorizontalAlignment(SwingConstants.CENTER);
+			bodovi.setBounds(300, 17, 121, 33);
+			contentPane.add(bodovi);
+			bodovi.setColumns(10);
+			
+			
+			
+			
 			this.worker=new SWIgra();
 			this.worker.execute();
 		}
