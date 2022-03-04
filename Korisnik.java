@@ -82,10 +82,11 @@ public class Korisnik {
 				System.out.print(br);
 				TimeUnit.SECONDS.sleep(1);
 				
-				String slovoBod=citac.readLine();
-				String[] slovoBod2=slovoBod.split("#");
-				String slovo = slovoBod2[0];
-				String bod=slovoBod2[1];
+				String slovoBodIme=citac.readLine();
+				String[] slovoBodIme2=slovoBodIme.split("#");
+				String slovo = slovoBodIme2[0];
+				String bod=slovoBodIme2[1];
+				ovaj.ime=slovoBodIme2[2];
 				int bodovi = Integer.parseInt(bod);
                	igra=new Igra(ovaj.getIme(), bodovi);
                	

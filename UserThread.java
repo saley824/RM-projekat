@@ -216,6 +216,8 @@ public class UserThread extends Thread implements Comparable<UserThread> {
 		// this.soba.dodajKorisnika(this);
 		try {
 			PlayerName = in.readLine();
+			provjeraImena(Server2.trenutnaSoba.korisnici, this);
+			
 		} catch (IOException e) {
 
 			e.printStackTrace();
@@ -238,7 +240,8 @@ public class UserThread extends Thread implements Comparable<UserThread> {
 
 			// slanje slova
 
-			out.println(c + "#" +this.points);
+			out.println(c + "#" +this.points+"#"+PlayerName);
+			
 			
 			//out.println(this.points+"");
 
@@ -447,6 +450,36 @@ public class UserThread extends Thread implements Comparable<UserThread> {
 	}
 
 	// vraca true ako je rijec prosla, vraca false ako rijec nije prosla
+	
+	private void provjeraImena(List<UserThread> korisnici, UserThread thisUser) {
+		synchronized (korisnici) {
+			for(UserThread user:korisnici ) {
+				
+				if(thisUser!=user) {
+					if(thisUser.PlayerName.equals(user.PlayerName)) {
+						thisUser.PlayerName+="_2";
+						break;
+					}
+				}
+					
+			
+		}
+			
+	for(UserThread user:korisnici ) {
+				
+				if(thisUser!=user) {
+					if(thisUser.PlayerName.equals(user.PlayerName)) {
+						thisUser.PlayerName=thisUser.PlayerName.substring(0,thisUser.PlayerName.length()-2);
+						thisUser.PlayerName+="_3";
+						break;
+					}
+				}
+					
+			
+		}
+		}
+	}
+	
 	private void bodovanje(List<PrimjedbaServer> lista, String polje, int n) {
 		synchronized (lista) {
 			if (!polje.equals("X") && provjeraPrimjedbe(lista, polje)) {
